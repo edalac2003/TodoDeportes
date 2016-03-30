@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tododeportes.backend.dto.TbCanchasxunidadDeportiva" table="tb_canchasxunidad_deportiva" catalog="todo_deportes" optimistic-lock="version">
+        <id name="idcanchaUnidad" type="int">
+            <column name="IDCANCHA_UNIDAD" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbCanchas" class="com.tododeportes.backend.dto.TbCanchas" fetch="join">
+            <column name="CANCHA" />
+        </many-to-one>
+        <many-to-one name="tbUnidadesDeportivas" class="com.tododeportes.backend.dto.TbUnidadesDeportivas" fetch="join">
+            <column name="UNIDAD_DEPORTIVA" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" />
+        </property>
+        <property name="disponibleInicio" type="timestamp">
+            <column name="DISPONIBLE_INICIO" length="19" />
+        </property>
+        <property name="disponibleFin" type="timestamp">
+            <column name="DISPONIBLE_FIN" length="19" />
+        </property>
+        <property name="estado" type="java.lang.Boolean">
+            <column name="ESTADO" />
+        </property>
+    </class>
+</hibernate-mapping>

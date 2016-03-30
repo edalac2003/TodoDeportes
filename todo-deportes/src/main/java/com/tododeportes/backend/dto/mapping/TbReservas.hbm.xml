@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tododeportes.backend.dto.TbReservas" table="tb_reservas" catalog="todo_deportes" optimistic-lock="version">
+        <id name="idreserva" type="int">
+            <column name="IDRESERVA" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbCanchasxunidadDeportiva" class="com.tododeportes.backend.dto.TbCanchasxunidadDeportiva" fetch="join">
+            <column name="ESCENARIO" />
+        </many-to-one>
+        <property name="fechaInicio" type="timestamp">
+            <column name="FECHA_INICIO" length="19" />
+        </property>
+        <property name="fechaFin" type="timestamp">
+            <column name="FECHA_FIN" length="19" />
+        </property>
+        <property name="usuario" type="java.lang.Integer">
+            <column name="USUARIO" />
+        </property>
+        <property name="tiempo" type="java.lang.Integer">
+            <column name="TIEMPO" />
+        </property>
+        <property name="valor" type="big_decimal">
+            <column name="VALOR" precision="12" />
+        </property>
+        <property name="estado" type="java.lang.Integer">
+            <column name="ESTADO" />
+        </property>
+    </class>
+</hibernate-mapping>

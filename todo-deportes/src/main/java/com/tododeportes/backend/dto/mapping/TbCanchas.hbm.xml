@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tododeportes.backend.dto.TbCanchas" table="tb_canchas" catalog="todo_deportes" optimistic-lock="version">
+        <id name="idcancha" type="int">
+            <column name="IDCANCHA" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbTipoEscenario" class="com.tododeportes.backend.dto.TbTipoEscenario" fetch="join">
+            <column name="TIPO_ESCENARIO" />
+        </many-to-one>
+        <many-to-one name="tbTiposDeporte" class="com.tododeportes.backend.dto.TbTiposDeporte" fetch="join">
+            <column name="TIPO_DEPORTE" />
+        </many-to-one>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="127" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tododeportes.backend.dto.TbUnidadesDeportivas" table="tb_unidades_deportivas" catalog="todo_deportes" optimistic-lock="version">
+        <id name="idunidadDeportiva" type="int">
+            <column name="IDUNIDAD_DEPORTIVA" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="45" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="DIRECCION" length="45" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="45" />
+        </property>
+        <property name="localidad" type="string">
+            <column name="LOCALIDAD" length="45" />
+        </property>
+        <property name="contacto" type="string">
+            <column name="CONTACTO" length="45" />
+        </property>
+    </class>
+</hibernate-mapping>

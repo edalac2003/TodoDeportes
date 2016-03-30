@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tododeportes.backend.dto.TbPagos" table="tb_pagos" catalog="todo_deportes" optimistic-lock="version">
+        <id name="idpago" type="int">
+            <column name="IDPAGO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbReservas" class="com.tododeportes.backend.dto.TbReservas" fetch="join">
+            <column name="RESERVA" />
+        </many-to-one>
+        <property name="fechaPago" type="timestamp">
+            <column name="FECHA_PAGO" length="19" />
+        </property>
+        <property name="valorPago" type="big_decimal">
+            <column name="VALOR_PAGO" precision="12" />
+        </property>
+        <property name="observacion" type="string">
+            <column name="OBSERVACION" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tododeportes.backend.dto.TbTipoEscenario" table="tb_tipo_escenario" catalog="todo_deportes" optimistic-lock="version">
+        <id name="idtipoEscenario" type="int">
+            <column name="IDTIPO_ESCENARIO" />
+            <generator class="assigned" />
+        </id>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" length="127" />
+        </property>
+    </class>
+</hibernate-mapping>

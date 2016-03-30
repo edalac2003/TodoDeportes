@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans 	xmlns="http://www.springframework.org/schema/beans"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+		xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+		xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.2.xsd
+ 			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+ 			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd http://www.springframework.org/schema/context/spring-context-2.5.xsd
+ 			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+ 			http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+		
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			<property name="url" value="jdbc:mysql://localhost:3306/todo_deportes" />
+			<property name="username" value="root" />
+			<property name="password" value="root" />
+		</bean>
+        
+		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+			<property name="dataSource" ref="dataSource"></property>
+			<property name="mappingResources">
+				<list>
+					<value>com/tododeportes/backend/dto/mapping/TbCanchas.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbCanchasxunidadDeportiva.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbCiudades.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbDepartamentos.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbEstados.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbLocalidades.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbPagos.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbPersonaRol.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbPersonas.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbPreciosCancha.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbReservas.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbRoles.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbTipoEscenario.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbTiposDeporte.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbTiposDocumento.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbUnidadesDeportivas.hbm.xml</value>
+					<value>com/tododeportes/backend/dto/mapping/TbUsuarios.hbm.xml</value>
+				</list>
+			</property>
+            
+            <property name="hibernateProperties">
+                 <props>
+                      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                      <prop key="hibernate.show_sql">false</prop>
+                      <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
+                 </props>
+            </property>      
+        </bean>
+        
+		<!-- SE CREAN LOS BEANS CORRESPONDIENTES A LOS DAO's -->        
+        <bean id="ubicacionDao" class="com.tododeportes.backend.dao.hibernate.UbicacionDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <!-- SE CREAN LOS BEANS CORRESPONDIENTES A LOS NGC's -->
+        
+        <bean id="facturaVentaNgc" class="com.tododeportes.backend.ngc.impl.UbicacionNGCImpl">
+        	<property name="ubicacionDao" ref="ubicacionDao" />
+        </bean>
+        
+
+</beans>

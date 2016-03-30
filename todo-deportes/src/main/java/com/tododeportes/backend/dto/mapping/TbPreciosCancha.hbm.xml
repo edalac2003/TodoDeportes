@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tododeportes.backend.dto.TbPreciosCancha" table="tb_precios_cancha" catalog="todo_deportes" optimistic-lock="version">
+        <id name="idtablaPrecios" type="int">
+            <column name="IDTABLA_PRECIOS" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbCanchasxunidadDeportiva" class="com.tododeportes.backend.dto.TbCanchasxunidadDeportiva" fetch="join">
+            <column name="CANCHAXUNIDAD" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="DESCRIPCION" />
+        </property>
+        <property name="lunes" type="java.lang.Boolean">
+            <column name="LUNES" />
+        </property>
+        <property name="martes" type="java.lang.Boolean">
+            <column name="MARTES" />
+        </property>
+        <property name="miercoles" type="java.lang.Boolean">
+            <column name="MIERCOLES" />
+        </property>
+        <property name="jueves" type="java.lang.Boolean">
+            <column name="JUEVES" />
+        </property>
+        <property name="viernes" type="java.lang.Boolean">
+            <column name="VIERNES" />
+        </property>
+        <property name="sabado" type="java.lang.Boolean">
+            <column name="SABADO" />
+        </property>
+        <property name="domingo" type="java.lang.Boolean">
+            <column name="DOMINGO" />
+        </property>
+        <property name="horaInicio" type="time">
+            <column name="HORA_INICIO" length="8" />
+        </property>
+        <property name="horaFin" type="time">
+            <column name="HORA_FIN" length="8" />
+        </property>
+        <property name="valorHora" type="java.lang.Long">
+            <column name="VALOR_HORA" precision="10" scale="0" />
+        </property>
+        <property name="descuento" type="java.lang.Long">
+            <column name="DESCUENTO" precision="10" scale="0" />
+        </property>
+    </class>
+</hibernate-mapping>

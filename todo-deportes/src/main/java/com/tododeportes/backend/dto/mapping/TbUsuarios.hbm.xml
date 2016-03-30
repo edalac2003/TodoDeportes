@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
+<hibernate-mapping>
+    <class name="com.tododeportes.backend.dto.TbUsuarios" table="tb_usuarios" catalog="todo_deportes" optimistic-lock="version">
+        <id name="idusuario" type="int">
+            <column name="IDUSUARIO" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="tbEstados" class="com.tododeportes.backend.dto.TbEstados" fetch="join">
+            <column name="ESTADO" />
+        </many-to-one>
+        <many-to-one name="tbPersonas" class="com.tododeportes.backend.dto.TbPersonas" fetch="join">
+            <column name="PERSONA" />
+        </many-to-one>
+        <many-to-one name="tbRoles" class="com.tododeportes.backend.dto.TbRoles" fetch="join">
+            <column name="ROL" />
+        </many-to-one>
+        <property name="login" type="string">
+            <column name="LOGIN" length="127" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" />
+        </property>
+    </class>
+</hibernate-mapping>

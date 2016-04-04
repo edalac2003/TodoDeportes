@@ -11,13 +11,21 @@
  			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
  			http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 		
-		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-			<property name="url" value="jdbc:mysql://localhost:3306/todo_deportes" />
-			<property name="username" value="root" />
-			<property name="password" value="root" />
-		</bean>
+		
+<!-- 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  -->
+<!-- 			<property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
+<!-- 			<property name="url" value="jdbc:mysql://localhost:3306/todo_deportes" /> -->
+<!-- 			<property name="username" value="root" /> -->
+<!-- 			<property name="password" value="root" /> -->
+<!-- 		</bean> -->
         
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+			<property name="driverClassName" value="org.postgresql.Driver" />
+			<property name="url" value="jdbc:postgresql://localhost:5432/tododeportes" />
+			<property name="username" value="postgres" />
+			<property name="password" value="123456" />
+		</bean>
+		
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 			<property name="dataSource" ref="dataSource"></property>
 			<property name="mappingResources">
@@ -44,7 +52,7 @@
             
             <property name="hibernateProperties">
                  <props>
-                      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                      <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
                       <prop key="hibernate.show_sql">false</prop>
                       <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
                  </props>
@@ -56,10 +64,18 @@
         	<property name="sessionFactory" ref="sessionFactory" />
         </bean>
         
+        <bean id="personaDao" class="com.tododeportes.backend.dao.hibernate.PersonaDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
         <!-- SE CREAN LOS BEANS CORRESPONDIENTES A LOS NGC's -->
         
-        <bean id="facturaVentaNgc" class="com.tododeportes.backend.ngc.impl.UbicacionNGCImpl">
+        <bean id="ubicacionNgc" class="com.tododeportes.backend.ngc.impl.UbicacionNGCImpl">
         	<property name="ubicacionDao" ref="ubicacionDao" />
+        </bean>
+        
+        <bean id="personaNgc" class="com.tododeportes.backend.ngc.impl.PersonaNGCImpl">
+        	<property name="personaDao" ref="personaDao" />
         </bean>
         
 

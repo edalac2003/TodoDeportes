@@ -41,6 +41,14 @@
 			<version>5.1.9</version>
 		</dependency>
 		
+		<!-- PostgreSQL -->
+		<dependency>
+			<groupId>postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.1-901.jdbc4</version>
+		</dependency>
+		
+		
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>

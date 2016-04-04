@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="com.tododeportes.backend.dto.TbPersonas" table="tb_personas" catalog="todo_deportes" optimistic-lock="version">
+    <class name="com.tododeportes.backend.dto.TbPersonas" table="tb_personas" catalog="tododeportes" optimistic-lock="version">
         <id name="idpersona" type="int">
             <column name="IDPERSONA" />
             <generator class="assigned" />

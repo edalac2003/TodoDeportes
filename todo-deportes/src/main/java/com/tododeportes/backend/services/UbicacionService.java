@@ -38,7 +38,7 @@ public class UbicacionService {
 		return ubicacionNgc.listarCiudades();
 	}
 	
-	@RequestMapping(value="", method=RequestMethod.GET, produces="application/JSON")
+	@RequestMapping(value="/listarLocalidades", method=RequestMethod.GET, produces="application/JSON")
 	public @ResponseBody List<TbLocalidades> listarLocalidades() throws Exception{
 		return ubicacionNgc.listarLocalidades();
 	}

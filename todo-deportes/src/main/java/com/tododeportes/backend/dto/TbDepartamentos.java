@@ -9,18 +9,8 @@ public class TbDepartamentos implements java.io.Serializable {
 
 	private int iddepartamento;
 	private String nombre;
-//	private Set tbCiudadeses = new HashSet(0);
 
 	public TbDepartamentos() {
-	}
-
-	public TbDepartamentos(int iddepartamento) {
-		this.iddepartamento = iddepartamento;
-	}
-
-	public TbDepartamentos(int iddepartamento, String nombre) {
-		this.iddepartamento = iddepartamento;
-		this.nombre = nombre;
 	}
 
 	public int getIddepartamento() {

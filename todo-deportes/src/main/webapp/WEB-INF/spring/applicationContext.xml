@@ -12,19 +12,19 @@
  			http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 		
 		
-<!-- 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  -->
-<!-- 			<property name="driverClassName" value="com.mysql.jdbc.Driver" /> -->
-<!-- 			<property name="url" value="jdbc:mysql://localhost:3306/todo_deportes" /> -->
-<!-- 			<property name="username" value="root" /> -->
-<!-- 			<property name="password" value="root" /> -->
-<!-- 		</bean> -->
-        
-        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
-			<property name="driverClassName" value="org.postgresql.Driver" />
-			<property name="url" value="jdbc:postgresql://localhost:5432/tododeportes" />
-			<property name="username" value="postgres" />
-			<property name="password" value="123456" />
+		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
+			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+			<property name="url" value="jdbc:mysql://localhost:3306/tododeportes" />
+			<property name="username" value="root" />
+			<property name="password" value="root" />
 		</bean>
+        
+<!--         <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">  -->
+<!-- 			<property name="driverClassName" value="org.postgresql.Driver" /> -->
+<!-- 			<property name="url" value="jdbc:postgresql://localhost:5432/tododeportes" /> -->
+<!-- 			<property name="username" value="postgres" /> -->
+<!-- 			<property name="password" value="123456" /> -->
+<!-- 		</bean> -->
 		
 		<bean id="sessionFactory" class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 			<property name="dataSource" ref="dataSource"></property>

@@ -45,8 +45,7 @@ public class UbicacionDAOHibernate extends HibernateDaoSupport implements Ubicac
 			throw expDao;
 		}finally {
 			session.close();
-		}
-		
+		}		
 		return listaDepartamentos;
 	}
 

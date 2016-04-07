@@ -2,9 +2,6 @@ package com.tododeportes.backend.ngc.impl;
 
 import java.util.List;
 
-import org.apache.log4j.Logger;
-import org.postgresql.translation.messages_bg;
-
 import com.tododeportes.backend.dao.UbicacionDAO;
 import com.tododeportes.backend.dto.TbCiudades;
 import com.tododeportes.backend.dto.TbDepartamentos;
@@ -14,12 +11,9 @@ import com.tododeportes.backend.util.exception.ExcepcionesDAO;
 import com.tododeportes.backend.util.exception.ExcepcionesNGC;
 
 public class UbicacionNGCImpl implements UbicacionNGC {
-
-	private Logger logger = Logger.getLogger(UbicacionNGCImpl.class);
 	
 	ExcepcionesNGC expNgc;
-	UbicacionDAO ubicacionDao;
-	
+	UbicacionDAO ubicacionDao;	
 	
 	/**
 	 * @param ubicacionDao the ubicacionDao to set
@@ -49,11 +43,9 @@ public class UbicacionNGCImpl implements UbicacionNGC {
 			expNgc.setMensajeTecnico(e.getMensajeTecnico());
 			expNgc.setMensajeUsuario(e.getMensajeUsuario());
 			expNgc.setOrigen(e.getOrigen());
-//			logger.error(e.getMensajeTecnico() +"  Error: "+ e.getMessage()+ "-- Producido por: "+e.getCause());
 			System.out.println(e.getMensajeTecnico() +"  Error: "+ e.getMessage()+ "-- Producido por: "+e.getCause());
 			throw expNgc;
-		}
-		
+		}		
 		return listaDepartamentos;
 	}
 

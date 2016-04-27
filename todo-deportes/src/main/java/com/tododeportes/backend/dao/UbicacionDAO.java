@@ -9,6 +9,8 @@ import com.tododeportes.backend.util.exception.ExcepcionesDAO;
 
 public interface UbicacionDAO {
 	
+	public TbDepartamentos obtenerDepartamento(int idDepartamento) throws ExcepcionesDAO;
+	
 	public TbCiudades obtenerCiudad(int idCiudad) throws ExcepcionesDAO;
 	
 	public TbLocalidades obtenerLocalidad(int idLocalidad) throws ExcepcionesDAO;
@@ -17,6 +19,10 @@ public interface UbicacionDAO {
 	
 	public List<TbCiudades> listarCiudades() throws ExcepcionesDAO; 
 	
+	public List<TbCiudades> listarCiudadesxDepartamento(TbDepartamentos departamento) throws ExcepcionesDAO;
+	
 	public List<TbLocalidades> listarLocalidades() throws ExcepcionesDAO;
+	
+	public List<TbLocalidades> listarLocalidadesxCiudad(TbCiudades ciudad) throws ExcepcionesDAO;
 
 }

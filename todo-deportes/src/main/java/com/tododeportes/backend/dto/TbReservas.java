@@ -12,93 +12,176 @@ public class TbReservas implements java.io.Serializable {
 
 	private int idreserva;
 	private TbCanchasxunidadDeportiva tbCanchasxunidadDeportiva;
-	private Date fechaInicio;
-	private Date fechaFin;
+	private Date fecha;
+	private Date horaInicio;
+	private Date horaFin;
 	private Integer usuario;
 	private Integer tiempo;
 	private BigDecimal valor;
-	private Integer estado;
+	private TbEstados tbEstados;
 
+	
+	/**
+	 * Constructor
+	 */
 	public TbReservas() {
+		super();
 	}
+	
 
-	public TbReservas(int idreserva) {
-		this.idreserva = idreserva;
-	}
-
-	public TbReservas(int idreserva, TbCanchasxunidadDeportiva tbCanchasxunidadDeportiva, Date fechaInicio,
-			Date fechaFin, Integer usuario, Integer tiempo, BigDecimal valor, Integer estado) {
+	/**
+	 * @param idreserva
+	 * @param tbCanchasxunidadDeportiva
+	 * @param fecha
+	 * @param horaInicio
+	 * @param horaFin
+	 * @param usuario
+	 * @param tiempo
+	 * @param valor
+	 * @param tbEstados
+	 */
+	public TbReservas(int idreserva, TbCanchasxunidadDeportiva tbCanchasxunidadDeportiva, Date fecha, Date horaInicio,
+			Date horaFin, Integer usuario, Integer tiempo, BigDecimal valor, TbEstados tbEstados) {
+		super();
 		this.idreserva = idreserva;
 		this.tbCanchasxunidadDeportiva = tbCanchasxunidadDeportiva;
-		this.fechaInicio = fechaInicio;
-		this.fechaFin = fechaFin;
+		this.fecha = fecha;
+		this.horaInicio = horaInicio;
+		this.horaFin = horaFin;
 		this.usuario = usuario;
 		this.tiempo = tiempo;
 		this.valor = valor;
-		this.estado = estado;
+		this.tbEstados = tbEstados;
 	}
 
+
+
+	/**
+	 * @return the idreserva
+	 */
 	public int getIdreserva() {
-		return this.idreserva;
+		return idreserva;
 	}
 
+	/**
+	 * @param idreserva the idreserva to set
+	 */
 	public void setIdreserva(int idreserva) {
 		this.idreserva = idreserva;
 	}
 
+	/**
+	 * @return the tbCanchasxunidadDeportiva
+	 */
 	public TbCanchasxunidadDeportiva getTbCanchasxunidadDeportiva() {
-		return this.tbCanchasxunidadDeportiva;
+		return tbCanchasxunidadDeportiva;
 	}
 
+	/**
+	 * @param tbCanchasxunidadDeportiva the tbCanchasxunidadDeportiva to set
+	 */
 	public void setTbCanchasxunidadDeportiva(TbCanchasxunidadDeportiva tbCanchasxunidadDeportiva) {
 		this.tbCanchasxunidadDeportiva = tbCanchasxunidadDeportiva;
 	}
 
-	public Date getFechaInicio() {
-		return this.fechaInicio;
+	
+
+	/**
+	 * @return the fecha
+	 */
+	public Date getFecha() {
+		return fecha;
 	}
 
-	public void setFechaInicio(Date fechaInicio) {
-		this.fechaInicio = fechaInicio;
+	/**
+	 * @param fecha the fecha to set
+	 */
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
-	public Date getFechaFin() {
-		return this.fechaFin;
+	/**
+	 * @return the horaInicio
+	 */
+	public Date getHoraInicio() {
+		return horaInicio;
 	}
 
-	public void setFechaFin(Date fechaFin) {
-		this.fechaFin = fechaFin;
+	/**
+	 * @param horaInicio the horaInicio to set
+	 */
+	public void setHoraInicio(Date horaInicio) {
+		this.horaInicio = horaInicio;
 	}
 
+	/**
+	 * @return the horaFin
+	 */
+	public Date getHoraFin() {
+		return horaFin;
+	}
+
+	/**
+	 * @param horaFin the horaFin to set
+	 */
+	public void setHoraFin(Date horaFin) {
+		this.horaFin = horaFin;
+	}
+
+	/**
+	 * @return the usuario
+	 */
 	public Integer getUsuario() {
-		return this.usuario;
+		return usuario;
 	}
 
+	/**
+	 * @param usuario the usuario to set
+	 */
 	public void setUsuario(Integer usuario) {
 		this.usuario = usuario;
 	}
 
+	/**
+	 * @return the tiempo
+	 */
 	public Integer getTiempo() {
-		return this.tiempo;
+		return tiempo;
 	}
 
+	/**
+	 * @param tiempo the tiempo to set
+	 */
 	public void setTiempo(Integer tiempo) {
 		this.tiempo = tiempo;
 	}
 
+	/**
+	 * @return the valor
+	 */
 	public BigDecimal getValor() {
-		return this.valor;
+		return valor;
 	}
 
+	/**
+	 * @param valor the valor to set
+	 */
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
 
-	public Integer getEstado() {
-		return this.estado;
+	/**
+	 * @return the tbEstados
+	 */
+	public TbEstados getTbEstados() {
+		return tbEstados;
 	}
 
-	public void setEstado(Integer estado) {
-		this.estado = estado;
+	/**
+	 * @param tbEstados the tbEstados to set
+	 */
+	public void setTbEstados(TbEstados tbEstados) {
+		this.tbEstados = tbEstados;
 	}
+
 }

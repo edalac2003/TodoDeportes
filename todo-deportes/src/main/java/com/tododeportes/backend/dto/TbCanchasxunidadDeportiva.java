@@ -15,7 +15,7 @@ public class TbCanchasxunidadDeportiva implements java.io.Serializable {
 	private String nombre;
 	private Date disponibleInicio;
 	private Date disponibleFin;
-	private Boolean estado;
+	private TbEstados tbEstados;
 	
 	public TbCanchasxunidadDeportiva() {
 	}
@@ -25,70 +25,113 @@ public class TbCanchasxunidadDeportiva implements java.io.Serializable {
 	}
 
 	public TbCanchasxunidadDeportiva(int idcanchaUnidad, TbCanchas tbCanchas, TbUnidadesDeportivas tbUnidadesDeportivas,
-			String nombre, Date disponibleInicio, Date disponibleFin, Boolean estado) {
+			String nombre, Date disponibleInicio, Date disponibleFin, TbEstados estado) {
 		this.idcanchaUnidad = idcanchaUnidad;
 		this.tbCanchas = tbCanchas;
 		this.tbUnidadesDeportivas = tbUnidadesDeportivas;
 		this.nombre = nombre;
 		this.disponibleInicio = disponibleInicio;
 		this.disponibleFin = disponibleFin;
-		this.estado = estado;
+		this.tbEstados = estado;
 	}
 
+	/**
+	 * @return the idcanchaUnidad
+	 */
 	public int getIdcanchaUnidad() {
-		return this.idcanchaUnidad;
+		return idcanchaUnidad;
 	}
 
+	/**
+	 * @param idcanchaUnidad the idcanchaUnidad to set
+	 */
 	public void setIdcanchaUnidad(int idcanchaUnidad) {
 		this.idcanchaUnidad = idcanchaUnidad;
 	}
 
+	/**
+	 * @return the tbCanchas
+	 */
 	public TbCanchas getTbCanchas() {
-		return this.tbCanchas;
+		return tbCanchas;
 	}
 
+	/**
+	 * @param tbCanchas the tbCanchas to set
+	 */
 	public void setTbCanchas(TbCanchas tbCanchas) {
 		this.tbCanchas = tbCanchas;
 	}
 
+	/**
+	 * @return the tbUnidadesDeportivas
+	 */
 	public TbUnidadesDeportivas getTbUnidadesDeportivas() {
-		return this.tbUnidadesDeportivas;
+		return tbUnidadesDeportivas;
 	}
 
+	/**
+	 * @param tbUnidadesDeportivas the tbUnidadesDeportivas to set
+	 */
 	public void setTbUnidadesDeportivas(TbUnidadesDeportivas tbUnidadesDeportivas) {
 		this.tbUnidadesDeportivas = tbUnidadesDeportivas;
 	}
 
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * @return the disponibleInicio
+	 */
 	public Date getDisponibleInicio() {
-		return this.disponibleInicio;
+		return disponibleInicio;
 	}
 
+	/**
+	 * @param disponibleInicio the disponibleInicio to set
+	 */
 	public void setDisponibleInicio(Date disponibleInicio) {
 		this.disponibleInicio = disponibleInicio;
 	}
 
+	/**
+	 * @return the disponibleFin
+	 */
 	public Date getDisponibleFin() {
-		return this.disponibleFin;
+		return disponibleFin;
 	}
 
+	/**
+	 * @param disponibleFin the disponibleFin to set
+	 */
 	public void setDisponibleFin(Date disponibleFin) {
 		this.disponibleFin = disponibleFin;
 	}
 
-	public Boolean getEstado() {
-		return this.estado;
+	/**
+	 * @return the tbEstados
+	 */
+	public TbEstados getTbEstados() {
+		return tbEstados;
 	}
 
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	/**
+	 * @param tbEstados the tbEstados to set
+	 */
+	public void setTbEstados(TbEstados tbEstados) {
+		this.tbEstados = tbEstados;
 	}
 
+	
 }

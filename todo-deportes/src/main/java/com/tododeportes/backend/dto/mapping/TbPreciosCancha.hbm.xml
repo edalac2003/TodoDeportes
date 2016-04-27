@@ -8,9 +8,6 @@
             <column name="IDTABLA_PRECIOS" />
             <generator class="assigned" />
         </id>
-        <many-to-one name="tbCanchasxunidadDeportiva" class="com.tododeportes.backend.dto.TbCanchasxunidadDeportiva" fetch="join">
-            <column name="CANCHAXUNIDAD" />
-        </many-to-one>
         <property name="descripcion" type="string">
             <column name="DESCRIPCION" />
         </property>

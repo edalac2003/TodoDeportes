@@ -11,41 +11,81 @@ public class TbLocalidades implements java.io.Serializable {
 	private TbCiudades tbCiudades;
 	private String nombre;
 
+	private String mensajeError;
+
+	/**
+	 * Constructor
+	 */
 	public TbLocalidades() {
+		super();
 	}
 
-	public TbLocalidades(int idlocalidad) {
-		this.idlocalidad = idlocalidad;
-	}
-
+	/**
+	 * @param idlocalidad
+	 * @param tbCiudades
+	 * @param nombre
+	 */
 	public TbLocalidades(int idlocalidad, TbCiudades tbCiudades, String nombre) {
+		super();
 		this.idlocalidad = idlocalidad;
 		this.tbCiudades = tbCiudades;
 		this.nombre = nombre;
 	}
 
+	/**
+	 * @return the idlocalidad
+	 */
 	public int getIdlocalidad() {
-		return this.idlocalidad;
+		return idlocalidad;
 	}
 
+	/**
+	 * @param idlocalidad the idlocalidad to set
+	 */
 	public void setIdlocalidad(int idlocalidad) {
 		this.idlocalidad = idlocalidad;
 	}
 
+	/**
+	 * @return the tbCiudades
+	 */
 	public TbCiudades getTbCiudades() {
-		return this.tbCiudades;
+		return tbCiudades;
 	}
 
+	/**
+	 * @param tbCiudades the tbCiudades to set
+	 */
 	public void setTbCiudades(TbCiudades tbCiudades) {
 		this.tbCiudades = tbCiudades;
 	}
 
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
 	}
 
 }

@@ -11,11 +11,14 @@
         <many-to-one name="tbCanchasxunidadDeportiva" class="com.tododeportes.backend.dto.TbCanchasxunidadDeportiva" fetch="join">
             <column name="ESCENARIO" />
         </many-to-one>
-        <property name="fechaInicio" type="timestamp">
-            <column name="FECHA_INICIO" length="19" />
+        <property name="fecha" type="timestamp">
+            <column name="FECHA" length="19" />
         </property>
-        <property name="fechaFin" type="timestamp">
-            <column name="FECHA_FIN" length="19" />
+        <property name="horaInicio" type="timestamp">
+            <column name="HORA_INICIO" length="19" />
+        </property>
+        <property name="horaFin" type="timestamp">
+            <column name="HORA_FIN" length="19" />
         </property>
         <property name="usuario" type="java.lang.Integer">
             <column name="USUARIO" />
@@ -26,8 +29,8 @@
         <property name="valor" type="big_decimal">
             <column name="VALOR" precision="12" />
         </property>
-        <property name="estado" type="java.lang.Integer">
+        <many-to-one name="tbEstados" class="com.tododeportes.backend.dto.TbEstados" fetch="join">
             <column name="ESTADO" />
-        </property>
+        </many-to-one>
     </class>
 </hibernate-mapping>

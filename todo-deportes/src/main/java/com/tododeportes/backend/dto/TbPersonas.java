@@ -17,106 +17,188 @@ public class TbPersonas implements java.io.Serializable {
 	private String telefonoCelular;
 	private String email;
 	private String numeroDocumento;
+	
+	private String mensajeError;
 
+	
+	/**
+	 * 
+	 */
 	public TbPersonas() {
+		super();
 	}
 
-	public TbPersonas(int idpersona) {
-		this.idpersona = idpersona;
-	}
-
+	/**
+	 * @param idpersona
+	 * @param tbCiudades
+	 * @param tbTiposDocumento
+	 * @param nombres
+	 * @param apellidos
+	 * @param numeroDocumento
+	 */
 	public TbPersonas(int idpersona, TbCiudades tbCiudades, TbTiposDocumento tbTiposDocumento, String nombres,
-			String apellidos, String direccion, String telefonoFijo, String telefonoCelular, String email,
-			String numeroDocumento) {
+			String apellidos, String numeroDocumento) {
+		super();
 		this.idpersona = idpersona;
 		this.tbCiudades = tbCiudades;
 		this.tbTiposDocumento = tbTiposDocumento;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
-		this.direccion = direccion;
-		this.telefonoFijo = telefonoFijo;
-		this.telefonoCelular = telefonoCelular;
-		this.email = email;
 		this.numeroDocumento = numeroDocumento;
 	}
 
+	/**
+	 * @return the idpersona
+	 */
 	public int getIdpersona() {
-		return this.idpersona;
+		return idpersona;
 	}
 
+	/**
+	 * @param idpersona the idpersona to set
+	 */
 	public void setIdpersona(int idpersona) {
 		this.idpersona = idpersona;
 	}
 
+	/**
+	 * @return the tbCiudades
+	 */
 	public TbCiudades getTbCiudades() {
-		return this.tbCiudades;
+		return tbCiudades;
 	}
 
+	/**
+	 * @param tbCiudades the tbCiudades to set
+	 */
 	public void setTbCiudades(TbCiudades tbCiudades) {
 		this.tbCiudades = tbCiudades;
 	}
 
+	/**
+	 * @return the tbTiposDocumento
+	 */
 	public TbTiposDocumento getTbTiposDocumento() {
-		return this.tbTiposDocumento;
+		return tbTiposDocumento;
 	}
 
+	/**
+	 * @param tbTiposDocumento the tbTiposDocumento to set
+	 */
 	public void setTbTiposDocumento(TbTiposDocumento tbTiposDocumento) {
 		this.tbTiposDocumento = tbTiposDocumento;
 	}
 
+	/**
+	 * @return the nombres
+	 */
 	public String getNombres() {
-		return this.nombres;
+		return nombres;
 	}
 
+	/**
+	 * @param nombres the nombres to set
+	 */
 	public void setNombres(String nombres) {
 		this.nombres = nombres;
 	}
 
+	/**
+	 * @return the apellidos
+	 */
 	public String getApellidos() {
-		return this.apellidos;
+		return apellidos;
 	}
 
+	/**
+	 * @param apellidos the apellidos to set
+	 */
 	public void setApellidos(String apellidos) {
 		this.apellidos = apellidos;
 	}
 
+	/**
+	 * @return the direccion
+	 */
 	public String getDireccion() {
-		return this.direccion;
+		return direccion;
 	}
 
+	/**
+	 * @param direccion the direccion to set
+	 */
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
 
+	/**
+	 * @return the telefonoFijo
+	 */
 	public String getTelefonoFijo() {
-		return this.telefonoFijo;
+		return telefonoFijo;
 	}
 
+	/**
+	 * @param telefonoFijo the telefonoFijo to set
+	 */
 	public void setTelefonoFijo(String telefonoFijo) {
 		this.telefonoFijo = telefonoFijo;
 	}
 
+	/**
+	 * @return the telefonoCelular
+	 */
 	public String getTelefonoCelular() {
-		return this.telefonoCelular;
+		return telefonoCelular;
 	}
 
+	/**
+	 * @param telefonoCelular the telefonoCelular to set
+	 */
 	public void setTelefonoCelular(String telefonoCelular) {
 		this.telefonoCelular = telefonoCelular;
 	}
 
+	/**
+	 * @return the email
+	 */
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
 
+	/**
+	 * @param email the email to set
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	/**
+	 * @return the numeroDocumento
+	 */
 	public String getNumeroDocumento() {
-		return this.numeroDocumento;
+		return numeroDocumento;
 	}
 
+	/**
+	 * @param numeroDocumento the numeroDocumento to set
+	 */
 	public void setNumeroDocumento(String numeroDocumento) {
 		this.numeroDocumento = numeroDocumento;
 	}
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}
+
 }

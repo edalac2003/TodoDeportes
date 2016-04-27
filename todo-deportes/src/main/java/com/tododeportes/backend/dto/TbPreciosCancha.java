@@ -10,7 +10,6 @@ import java.util.Date;
 public class TbPreciosCancha implements java.io.Serializable {
 
 	private int idtablaPrecios;
-	private TbCanchasxunidadDeportiva tbCanchasxunidadDeportiva;
 	private String descripcion;
 	private Boolean lunes;
 	private Boolean martes;
@@ -23,141 +22,193 @@ public class TbPreciosCancha implements java.io.Serializable {
 	private Date horaFin;
 	private Long valorHora;
 	private Long descuento;
+	
 
+	/**
+	 * Constructor
+	 */
 	public TbPreciosCancha() {
+		super();
 	}
 
-	public TbPreciosCancha(int idtablaPrecios) {
-		this.idtablaPrecios = idtablaPrecios;
-	}
-
-	public TbPreciosCancha(int idtablaPrecios, TbCanchasxunidadDeportiva tbCanchasxunidadDeportiva, String descripcion,
-			Boolean lunes, Boolean martes, Boolean miercoles, Boolean jueves, Boolean viernes, Boolean sabado,
-			Boolean domingo, Date horaInicio, Date horaFin, Long valorHora, Long descuento) {
-		this.idtablaPrecios = idtablaPrecios;
-		this.tbCanchasxunidadDeportiva = tbCanchasxunidadDeportiva;
-		this.descripcion = descripcion;
-		this.lunes = lunes;
-		this.martes = martes;
-		this.miercoles = miercoles;
-		this.jueves = jueves;
-		this.viernes = viernes;
-		this.sabado = sabado;
-		this.domingo = domingo;
-		this.horaInicio = horaInicio;
-		this.horaFin = horaFin;
-		this.valorHora = valorHora;
-		this.descuento = descuento;
-	}
-
+	/**
+	 * @return the idtablaPrecios
+	 */
 	public int getIdtablaPrecios() {
-		return this.idtablaPrecios;
+		return idtablaPrecios;
 	}
 
+	/**
+	 * @param idtablaPrecios the idtablaPrecios to set
+	 */
 	public void setIdtablaPrecios(int idtablaPrecios) {
 		this.idtablaPrecios = idtablaPrecios;
 	}
 
-	public TbCanchasxunidadDeportiva getTbCanchasxunidadDeportiva() {
-		return this.tbCanchasxunidadDeportiva;
-	}
-
-	public void setTbCanchasxunidadDeportiva(TbCanchasxunidadDeportiva tbCanchasxunidadDeportiva) {
-		this.tbCanchasxunidadDeportiva = tbCanchasxunidadDeportiva;
-	}
-
+	/**
+	 * @return the descripcion
+	 */
 	public String getDescripcion() {
-		return this.descripcion;
+		return descripcion;
 	}
 
+	/**
+	 * @param descripcion the descripcion to set
+	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
+	/**
+	 * @return the lunes
+	 */
 	public Boolean getLunes() {
-		return this.lunes;
+		return lunes;
 	}
 
+	/**
+	 * @param lunes the lunes to set
+	 */
 	public void setLunes(Boolean lunes) {
 		this.lunes = lunes;
 	}
 
+	/**
+	 * @return the martes
+	 */
 	public Boolean getMartes() {
-		return this.martes;
+		return martes;
 	}
 
+	/**
+	 * @param martes the martes to set
+	 */
 	public void setMartes(Boolean martes) {
 		this.martes = martes;
 	}
 
+	/**
+	 * @return the miercoles
+	 */
 	public Boolean getMiercoles() {
-		return this.miercoles;
+		return miercoles;
 	}
 
+	/**
+	 * @param miercoles the miercoles to set
+	 */
 	public void setMiercoles(Boolean miercoles) {
 		this.miercoles = miercoles;
 	}
 
+	/**
+	 * @return the jueves
+	 */
 	public Boolean getJueves() {
-		return this.jueves;
+		return jueves;
 	}
 
+	/**
+	 * @param jueves the jueves to set
+	 */
 	public void setJueves(Boolean jueves) {
 		this.jueves = jueves;
 	}
 
+	/**
+	 * @return the viernes
+	 */
 	public Boolean getViernes() {
-		return this.viernes;
+		return viernes;
 	}
 
+	/**
+	 * @param viernes the viernes to set
+	 */
 	public void setViernes(Boolean viernes) {
 		this.viernes = viernes;
 	}
 
+	/**
+	 * @return the sabado
+	 */
 	public Boolean getSabado() {
-		return this.sabado;
+		return sabado;
 	}
 
+	/**
+	 * @param sabado the sabado to set
+	 */
 	public void setSabado(Boolean sabado) {
 		this.sabado = sabado;
 	}
 
+	/**
+	 * @return the domingo
+	 */
 	public Boolean getDomingo() {
-		return this.domingo;
+		return domingo;
 	}
 
+	/**
+	 * @param domingo the domingo to set
+	 */
 	public void setDomingo(Boolean domingo) {
 		this.domingo = domingo;
 	}
 
+	/**
+	 * @return the horaInicio
+	 */
 	public Date getHoraInicio() {
-		return this.horaInicio;
+		return horaInicio;
 	}
 
+	/**
+	 * @param horaInicio the horaInicio to set
+	 */
 	public void setHoraInicio(Date horaInicio) {
 		this.horaInicio = horaInicio;
 	}
 
+	/**
+	 * @return the horaFin
+	 */
 	public Date getHoraFin() {
-		return this.horaFin;
+		return horaFin;
 	}
 
+	/**
+	 * @param horaFin the horaFin to set
+	 */
 	public void setHoraFin(Date horaFin) {
 		this.horaFin = horaFin;
 	}
 
+	/**
+	 * @return the valorHora
+	 */
 	public Long getValorHora() {
-		return this.valorHora;
+		return valorHora;
 	}
 
+	/**
+	 * @param valorHora the valorHora to set
+	 */
 	public void setValorHora(Long valorHora) {
 		this.valorHora = valorHora;
 	}
 
+	/**
+	 * @return the descuento
+	 */
 	public Long getDescuento() {
-		return this.descuento;
+		return descuento;
 	}
 
+	/**
+	 * @param descuento the descuento to set
+	 */
 	public void setDescuento(Long descuento) {
 		this.descuento = descuento;
 	}

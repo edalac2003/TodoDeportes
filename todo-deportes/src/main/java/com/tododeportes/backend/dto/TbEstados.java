@@ -24,26 +24,44 @@ public class TbEstados implements java.io.Serializable {
 		this.valor = valor;
 	}
 
+	/**
+	 * @return the idestado
+	 */
 	public int getIdestado() {
-		return this.idestado;
+		return idestado;
 	}
 
+	/**
+	 * @param idestado the idestado to set
+	 */
 	public void setIdestado(int idestado) {
 		this.idestado = idestado;
 	}
 
+	/**
+	 * @return the tablaReferencia
+	 */
 	public String getTablaReferencia() {
-		return this.tablaReferencia;
+		return tablaReferencia;
 	}
 
+	/**
+	 * @param tablaReferencia the tablaReferencia to set
+	 */
 	public void setTablaReferencia(String tablaReferencia) {
 		this.tablaReferencia = tablaReferencia;
 	}
 
+	/**
+	 * @return the valor
+	 */
 	public String getValor() {
-		return this.valor;
+		return valor;
 	}
 
+	/**
+	 * @param valor the valor to set
+	 */
 	public void setValor(String valor) {
 		this.valor = valor;
 	}

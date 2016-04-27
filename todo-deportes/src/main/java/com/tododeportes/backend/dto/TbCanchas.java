@@ -12,49 +12,85 @@ public class TbCanchas implements java.io.Serializable {
 	private TbTiposDeporte tbTiposDeporte;
 	private String nombre;
 
+	
+	/**
+	 * 
+	 */
 	public TbCanchas() {
+		super();
 	}
+	
 
-	public TbCanchas(int idcancha) {
-		this.idcancha = idcancha;
-	}
-
+	/**
+	 * @param idcancha
+	 * @param tbTipoEscenario
+	 * @param tbTiposDeporte
+	 * @param nombre
+	 */
 	public TbCanchas(int idcancha, TbTipoEscenario tbTipoEscenario, TbTiposDeporte tbTiposDeporte, String nombre) {
+		super();
 		this.idcancha = idcancha;
 		this.tbTipoEscenario = tbTipoEscenario;
 		this.tbTiposDeporte = tbTiposDeporte;
 		this.nombre = nombre;
 	}
 
+
+	/**
+	 * @return the idcancha
+	 */
 	public int getIdcancha() {
-		return this.idcancha;
+		return idcancha;
 	}
 
+	/**
+	 * @param idcancha the idcancha to set
+	 */
 	public void setIdcancha(int idcancha) {
 		this.idcancha = idcancha;
 	}
 
+	/**
+	 * @return the tbTipoEscenario
+	 */
 	public TbTipoEscenario getTbTipoEscenario() {
-		return this.tbTipoEscenario;
+		return tbTipoEscenario;
 	}
 
+	/**
+	 * @param tbTipoEscenario the tbTipoEscenario to set
+	 */
 	public void setTbTipoEscenario(TbTipoEscenario tbTipoEscenario) {
 		this.tbTipoEscenario = tbTipoEscenario;
 	}
 
+	/**
+	 * @return the tbTiposDeporte
+	 */
 	public TbTiposDeporte getTbTiposDeporte() {
-		return this.tbTiposDeporte;
+		return tbTiposDeporte;
 	}
 
+	/**
+	 * @param tbTiposDeporte the tbTiposDeporte to set
+	 */
 	public void setTbTiposDeporte(TbTiposDeporte tbTiposDeporte) {
 		this.tbTiposDeporte = tbTiposDeporte;
 	}
 
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	
 }

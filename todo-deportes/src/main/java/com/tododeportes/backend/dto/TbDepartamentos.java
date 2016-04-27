@@ -9,34 +9,68 @@ public class TbDepartamentos implements java.io.Serializable {
 
 	private int iddepartamento;
 	private String nombre;
-//	private Set tbCiudadeses = new HashSet(0);
+	
+	private String mensajeError;
 
+
+	/**
+	 * Constructor
+	 */
 	public TbDepartamentos() {
+		super();
 	}
 
-	public TbDepartamentos(int iddepartamento) {
-		this.iddepartamento = iddepartamento;
-	}
-
+	/**
+	 * @param iddepartamento
+	 * @param nombre
+	 */
 	public TbDepartamentos(int iddepartamento, String nombre) {
+		super();
 		this.iddepartamento = iddepartamento;
 		this.nombre = nombre;
 	}
 
+	/**
+	 * @return the iddepartamento
+	 */
 	public int getIddepartamento() {
-		return this.iddepartamento;
+		return iddepartamento;
 	}
 
+	/**
+	 * @param iddepartamento the iddepartamento to set
+	 */
 	public void setIddepartamento(int iddepartamento) {
 		this.iddepartamento = iddepartamento;
 	}
 
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}
+	
+	
 }

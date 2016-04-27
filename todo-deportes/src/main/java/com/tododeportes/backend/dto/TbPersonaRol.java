@@ -13,57 +13,97 @@ public class TbPersonaRol implements java.io.Serializable {
 	private String rol;
 	private String estado;
 
+	
+
+	/**
+	 * Constructor
+	 */
 	public TbPersonaRol() {
+		super();
 	}
-
-	public TbPersonaRol(int idpersonaRol) {
-		this.idpersonaRol = idpersonaRol;
-	}
-
-	public TbPersonaRol(int idpersonaRol, String descripcion, String persona, String rol, String estado) {
+	
+	/**
+	 * @param idpersonaRol
+	 * @param descripcion
+	 * @param persona
+	 * @param rol
+	 */
+	public TbPersonaRol(int idpersonaRol, String descripcion, String persona, String rol) {
+		super();
 		this.idpersonaRol = idpersonaRol;
 		this.descripcion = descripcion;
 		this.persona = persona;
 		this.rol = rol;
-		this.estado = estado;
 	}
-
+	
+	/**
+	 * @return the idpersonaRol
+	 */
 	public int getIdpersonaRol() {
-		return this.idpersonaRol;
+		return idpersonaRol;
 	}
 
+
+
+	/**
+	 * @param idpersonaRol the idpersonaRol to set
+	 */
 	public void setIdpersonaRol(int idpersonaRol) {
 		this.idpersonaRol = idpersonaRol;
 	}
 
+	/**
+	 * @return the descripcion
+	 */
 	public String getDescripcion() {
-		return this.descripcion;
+		return descripcion;
 	}
 
+	/**
+	 * @param descripcion the descripcion to set
+	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
+	/**
+	 * @return the persona
+	 */
 	public String getPersona() {
-		return this.persona;
+		return persona;
 	}
 
+	/**
+	 * @param persona the persona to set
+	 */
 	public void setPersona(String persona) {
 		this.persona = persona;
 	}
 
+	/**
+	 * @return the rol
+	 */
 	public String getRol() {
-		return this.rol;
+		return rol;
 	}
 
+	/**
+	 * @param rol the rol to set
+	 */
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
 
+	/**
+	 * @return the estado
+	 */
 	public String getEstado() {
-		return this.estado;
+		return estado;
 	}
 
+	/**
+	 * @param estado the estado to set
+	 */
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}

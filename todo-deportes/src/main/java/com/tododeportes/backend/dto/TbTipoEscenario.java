@@ -10,31 +10,50 @@ public class TbTipoEscenario implements java.io.Serializable {
 	private int idtipoEscenario;
 	private String descripcion;
 
+	
+	/**
+	 * Constructor
+	 */
 	public TbTipoEscenario() {
+		super();
 	}
 
-	public TbTipoEscenario(int idtipoEscenario) {
-		this.idtipoEscenario = idtipoEscenario;
-	}
-
+	/**
+	 * @param idtipoEscenario
+	 * @param descripcion
+	 */
 	public TbTipoEscenario(int idtipoEscenario, String descripcion) {
+		super();
 		this.idtipoEscenario = idtipoEscenario;
 		this.descripcion = descripcion;
 	}
 
+	/**
+	 * @return the idtipoEscenario
+	 */
 	public int getIdtipoEscenario() {
-		return this.idtipoEscenario;
+		return idtipoEscenario;
 	}
 
+	/**
+	 * @param idtipoEscenario the idtipoEscenario to set
+	 */
 	public void setIdtipoEscenario(int idtipoEscenario) {
 		this.idtipoEscenario = idtipoEscenario;
 	}
 
+	/**
+	 * @return the descripcion
+	 */
 	public String getDescripcion() {
-		return this.descripcion;
+		return descripcion;
 	}
 
+	/**
+	 * @param descripcion the descripcion to set
+	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+
 }

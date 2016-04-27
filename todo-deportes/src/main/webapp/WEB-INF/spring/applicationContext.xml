@@ -52,7 +52,8 @@
             
             <property name="hibernateProperties">
                  <props>
-                      <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+<!--                       <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop> -->
+                      <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                       <prop key="hibernate.show_sql">false</prop>
                       <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
                  </props>
@@ -68,8 +69,11 @@
         	<property name="sessionFactory" ref="sessionFactory" />
         </bean>
         
-        <!-- SE CREAN LOS BEANS CORRESPONDIENTES A LOS NGC's -->
+        <bean id="canchaDao" class="com.tododeportes.backend.dao.hibernate.CanchasDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
         
+        <!-- SE CREAN LOS BEANS CORRESPONDIENTES A LOS NGC's -->        
         <bean id="ubicacionNgc" class="com.tododeportes.backend.ngc.impl.UbicacionNGCImpl">
         	<property name="ubicacionDao" ref="ubicacionDao" />
         </bean>
@@ -78,5 +82,8 @@
         	<property name="personaDao" ref="personaDao" />
         </bean>
         
+        <bean id="canchaNgc" class="com.tododeportes.backend.ngc.impl.CanchasNGCImpl">
+        	<property name="canchaDao" ref="canchaDao" />
+        </bean>
 
 </beans>

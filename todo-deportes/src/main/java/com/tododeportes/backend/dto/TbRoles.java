@@ -10,31 +10,52 @@ public class TbRoles implements java.io.Serializable {
 	private int idrol;
 	private String nombre;
 
+
+	/**
+	 * Constructor
+	 */
 	public TbRoles() {
+		super();
 	}
 
-	public TbRoles(int idrol) {
-		this.idrol = idrol;
-	}
 
+	/**
+	 * @param idrol
+	 * @param nombre
+	 */
 	public TbRoles(int idrol, String nombre) {
+		super();
 		this.idrol = idrol;
 		this.nombre = nombre;
 	}
 
+
+	/**
+	 * @return the idrol
+	 */
 	public int getIdrol() {
-		return this.idrol;
+		return idrol;
 	}
 
+	/**
+	 * @param idrol the idrol to set
+	 */
 	public void setIdrol(int idrol) {
 		this.idrol = idrol;
 	}
 
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 }

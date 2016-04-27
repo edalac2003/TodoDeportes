@@ -7,6 +7,10 @@ import com.tododeportes.backend.util.exception.ExcepcionesNGC;
 
 public interface PersonaNGC {
 	
+	public void guardarPersona(TbPersonas persona) throws ExcepcionesNGC;
+	
+	public void actualizarPersona(TbPersonas persona) throws ExcepcionesNGC;
+	
 	public TbPersonas obtenerPersonaxDocumento(String idDocumento) throws ExcepcionesNGC;
 	
 	public List<TbPersonas> listaPersonas() throws ExcepcionesNGC;

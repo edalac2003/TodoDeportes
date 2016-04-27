@@ -18,6 +18,103 @@ public class PersonaNGCImpl implements PersonaNGC {
 	public void setPersonaDao(PersonaDAO personaDao) {
 		this.personaDao = personaDao;
 	}
+	
+	
+	@Override
+	public void guardarPersona(TbPersonas persona) throws ExcepcionesNGC {
+		if(persona == null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("El Registro de la Persona no puede ser Null.");
+			throw expNgc;
+		}
+		
+		if(persona.getTbCiudades() == null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("La Ciudad de la Persona no puede ser Null.");
+			throw expNgc;
+		}
+		if(persona.getTbTiposDocumento() == null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("El Tipo de Documento de la Persona no puede ser Null.");
+			throw expNgc;
+		}
+		
+		if((persona.getNumeroDocumento() == null) || (persona.getApellidos() == null) || (persona.getApellidos() == null)){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("Se requieren datos importantes de la persona que no puede ser Null.");
+			throw expNgc;
+		}
+		
+		//Se comprueba que el registro de persona NO EXISTA.
+		TbPersonas existePersona = obtenerPersonaxDocumento(persona.getNumeroDocumento());
+		
+		if(existePersona != null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("La Persona que desea guardar ya EXISTE en la Base de Datos.");
+			throw expNgc;
+		}
+		
+		try {
+			personaDao.guardarPersona(persona);
+		} catch (ExcepcionesDAO e) {
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeTecnico(e.getMensajeTecnico());
+			expNgc.setMensajeUsuario(e.getMensajeUsuario());
+			expNgc.setOrigen(e.getOrigen());
+			throw expNgc;
+		}
+		
+	}
+
+
+
+	@Override
+	public void actualizarPersona(TbPersonas persona) throws ExcepcionesNGC {
+		if(persona == null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("El Registro de la Persona no puede ser Null.");
+			throw expNgc;
+		}
+		
+		if(persona.getTbCiudades() == null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("La Ciudad de la Persona no puede ser Null.");
+			throw expNgc;
+		}
+		if(persona.getTbTiposDocumento() == null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("El Tipo de Documento de la Persona no puede ser Null.");
+			throw expNgc;
+		}
+		
+		if((persona.getNumeroDocumento() == null) || (persona.getApellidos() == null) || (persona.getApellidos() == null)){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("Se requieren datos importantes de la persona que no puede ser Null.");
+			throw expNgc;
+		}
+		
+		//Se comprueba que el registro de persona EXISTA.
+		TbPersonas existePersona = obtenerPersonaxDocumento(persona.getNumeroDocumento());
+		
+		if(existePersona == null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("La Persona que desea guardar NO EXISTE en la Base de Datos.");
+			throw expNgc;
+		}
+		
+		try {
+			personaDao.actualizarPersona(persona);
+		} catch (ExcepcionesDAO e) {
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeTecnico(e.getMensajeTecnico());
+			expNgc.setMensajeUsuario(e.getMensajeUsuario());
+			expNgc.setOrigen(e.getOrigen());
+			throw expNgc;
+		}
+		
+	}
+
+
 
 	@Override
 	public TbPersonas obtenerPersonaxDocumento(String idDocumento) throws ExcepcionesNGC {
@@ -35,7 +132,7 @@ public class PersonaNGCImpl implements PersonaNGC {
 			}
 		}else{
 			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeUsuario("No es posible realizar la consulta porque el Id Documento no es válido.");
+			expNgc.setMensajeUsuario("No es posible realizar la consulta porque el Id Documento no es v&aacutelido.");
 			throw expNgc;			
 		}
 		

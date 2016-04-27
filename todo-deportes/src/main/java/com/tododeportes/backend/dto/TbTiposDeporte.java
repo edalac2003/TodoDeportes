@@ -10,31 +10,40 @@ public class TbTiposDeporte implements java.io.Serializable {
 	private int idtipoDeporte;
 	private String nombre;
 
+	
+	/**
+	 * Constructor
+	 */
 	public TbTiposDeporte() {
+		super();
 	}
 
-	public TbTiposDeporte(int idtipoDeporte) {
-		this.idtipoDeporte = idtipoDeporte;
-	}
-
-	public TbTiposDeporte(int idtipoDeporte, String nombre) {
-		this.idtipoDeporte = idtipoDeporte;
-		this.nombre = nombre;
-	}
-
+	/**
+	 * @return the idtipoDeporte
+	 */
 	public int getIdtipoDeporte() {
-		return this.idtipoDeporte;
+		return idtipoDeporte;
 	}
 
+	/**
+	 * @param idtipoDeporte the idtipoDeporte to set
+	 */
 	public void setIdtipoDeporte(int idtipoDeporte) {
 		this.idtipoDeporte = idtipoDeporte;
 	}
 
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 }

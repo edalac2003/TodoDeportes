@@ -11,40 +11,54 @@ public class TbTiposDocumento implements java.io.Serializable {
 	private String descripcion;
 	private String abreviado;
 	
+
+	/**
+	 * 
+	 */
 	public TbTiposDocumento() {
+		super();
 	}
 
-	public TbTiposDocumento(int idtipoDocumento) {
-		this.idtipoDocumento = idtipoDocumento;
-	}
-
-	public TbTiposDocumento(int idtipoDocumento, String descripcion, String abreviado) {
-		this.idtipoDocumento = idtipoDocumento;
-		this.descripcion = descripcion;
-		this.abreviado = abreviado;
-	}
-
+	/**
+	 * @return the idtipoDocumento
+	 */
 	public int getIdtipoDocumento() {
-		return this.idtipoDocumento;
+		return idtipoDocumento;
 	}
 
+	/**
+	 * @param idtipoDocumento the idtipoDocumento to set
+	 */
 	public void setIdtipoDocumento(int idtipoDocumento) {
 		this.idtipoDocumento = idtipoDocumento;
 	}
 
+	/**
+	 * @return the descripcion
+	 */
 	public String getDescripcion() {
-		return this.descripcion;
+		return descripcion;
 	}
 
+	/**
+	 * @param descripcion the descripcion to set
+	 */
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
 
+	/**
+	 * @return the abreviado
+	 */
 	public String getAbreviado() {
-		return this.abreviado;
+		return abreviado;
 	}
 
+	/**
+	 * @param abreviado the abreviado to set
+	 */
 	public void setAbreviado(String abreviado) {
 		this.abreviado = abreviado;
 	}
+
 }

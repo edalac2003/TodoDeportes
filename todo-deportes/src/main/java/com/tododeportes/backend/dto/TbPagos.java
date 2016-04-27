@@ -15,60 +15,98 @@ public class TbPagos implements java.io.Serializable {
 	private Date fechaPago;
 	private BigDecimal valorPago;
 	private String observacion;
+	
 
+	/**
+	 * Constructor
+	 */
 	public TbPagos() {
+		super();
 	}
 
-	public TbPagos(int idpago) {
-		this.idpago = idpago;
-	}
-
-	public TbPagos(int idpago, TbReservas tbReservas, Date fechaPago, BigDecimal valorPago, String observacion) {
+	/**
+	 * @param idpago
+	 * @param tbReservas
+	 * @param fechaPago
+	 * @param valorPago
+	 */
+	public TbPagos(int idpago, TbReservas tbReservas, Date fechaPago, BigDecimal valorPago) {
+		super();
 		this.idpago = idpago;
 		this.tbReservas = tbReservas;
 		this.fechaPago = fechaPago;
 		this.valorPago = valorPago;
-		this.observacion = observacion;
 	}
 
+	/**
+	 * @return the idpago
+	 */
 	public int getIdpago() {
-		return this.idpago;
+		return idpago;
 	}
 
+	/**
+	 * @param idpago the idpago to set
+	 */
 	public void setIdpago(int idpago) {
 		this.idpago = idpago;
 	}
 
+	/**
+	 * @return the tbReservas
+	 */
 	public TbReservas getTbReservas() {
-		return this.tbReservas;
+		return tbReservas;
 	}
 
+	/**
+	 * @param tbReservas the tbReservas to set
+	 */
 	public void setTbReservas(TbReservas tbReservas) {
 		this.tbReservas = tbReservas;
 	}
 
+	/**
+	 * @return the fechaPago
+	 */
 	public Date getFechaPago() {
-		return this.fechaPago;
+		return fechaPago;
 	}
 
+	/**
+	 * @param fechaPago the fechaPago to set
+	 */
 	public void setFechaPago(Date fechaPago) {
 		this.fechaPago = fechaPago;
 	}
 
+	/**
+	 * @return the valorPago
+	 */
 	public BigDecimal getValorPago() {
-		return this.valorPago;
+		return valorPago;
 	}
 
+	/**
+	 * @param valorPago the valorPago to set
+	 */
 	public void setValorPago(BigDecimal valorPago) {
 		this.valorPago = valorPago;
 	}
 
+	/**
+	 * @return the observacion
+	 */
 	public String getObservacion() {
-		return this.observacion;
+		return observacion;
 	}
 
+	/**
+	 * @param observacion the observacion to set
+	 */
 	public void setObservacion(String observacion) {
 		this.observacion = observacion;
 	}
 
+	
 }

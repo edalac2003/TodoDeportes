@@ -10,41 +10,82 @@ public class TbCiudades implements java.io.Serializable {
 	private int idciudad;
 	private TbDepartamentos tbDepartamentos;
 	private String nombre;
+	
+	private String mensajeError;
 
+	/**
+	 * Constructor
+	 */
 	public TbCiudades() {
+		super();
 	}
 
-	public TbCiudades(int idciudad) {
-		this.idciudad = idciudad;
-	}
-
+	/**
+	 * @param idciudad
+	 * @param tbDepartamentos
+	 * @param nombre
+	 */
 	public TbCiudades(int idciudad, TbDepartamentos tbDepartamentos, String nombre) {
+		super();
 		this.idciudad = idciudad;
 		this.tbDepartamentos = tbDepartamentos;
 		this.nombre = nombre;
 	}
 
+	/**
+	 * @return the idciudad
+	 */
 	public int getIdciudad() {
-		return this.idciudad;
+		return idciudad;
 	}
 
+	/**
+	 * @param idciudad the idciudad to set
+	 */
 	public void setIdciudad(int idciudad) {
 		this.idciudad = idciudad;
 	}
 
+	/**
+	 * @return the tbDepartamentos
+	 */
 	public TbDepartamentos getTbDepartamentos() {
-		return this.tbDepartamentos;
+		return tbDepartamentos;
 	}
 
+	/**
+	 * @param tbDepartamentos the tbDepartamentos to set
+	 */
 	public void setTbDepartamentos(TbDepartamentos tbDepartamentos) {
 		this.tbDepartamentos = tbDepartamentos;
 	}
 
+	/**
+	 * @return the nombre
+	 */
 	public String getNombre() {
-		return this.nombre;
+		return nombre;
 	}
 
+	/**
+	 * @param nombre the nombre to set
+	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}
+	
 }

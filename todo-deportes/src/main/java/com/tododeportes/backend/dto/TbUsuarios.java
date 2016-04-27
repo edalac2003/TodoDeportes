@@ -14,15 +14,27 @@ public class TbUsuarios implements java.io.Serializable {
 	private String login;
 	private String password;
 
+	
+
+	/**
+	 * Constructor 
+	 */
 	public TbUsuarios() {
+		super();
 	}
+	
 
-	public TbUsuarios(int idusuario) {
-		this.idusuario = idusuario;
-	}
-
+	/**
+	 * @param idusuario
+	 * @param tbEstados
+	 * @param tbPersonas
+	 * @param tbRoles
+	 * @param login
+	 * @param password
+	 */
 	public TbUsuarios(int idusuario, TbEstados tbEstados, TbPersonas tbPersonas, TbRoles tbRoles, String login,
 			String password) {
+		super();
 		this.idusuario = idusuario;
 		this.tbEstados = tbEstados;
 		this.tbPersonas = tbPersonas;
@@ -31,52 +43,89 @@ public class TbUsuarios implements java.io.Serializable {
 		this.password = password;
 	}
 
+
+
+	/**
+	 * @return the idusuario
+	 */
 	public int getIdusuario() {
-		return this.idusuario;
+		return idusuario;
 	}
 
+	/**
+	 * @param idusuario the idusuario to set
+	 */
 	public void setIdusuario(int idusuario) {
 		this.idusuario = idusuario;
 	}
 
+	/**
+	 * @return the tbEstados
+	 */
 	public TbEstados getTbEstados() {
-		return this.tbEstados;
+		return tbEstados;
 	}
 
+	/**
+	 * @param tbEstados the tbEstados to set
+	 */
 	public void setTbEstados(TbEstados tbEstados) {
 		this.tbEstados = tbEstados;
 	}
 
+	/**
+	 * @return the tbPersonas
+	 */
 	public TbPersonas getTbPersonas() {
-		return this.tbPersonas;
+		return tbPersonas;
 	}
 
+	/**
+	 * @param tbPersonas the tbPersonas to set
+	 */
 	public void setTbPersonas(TbPersonas tbPersonas) {
 		this.tbPersonas = tbPersonas;
 	}
 
+	/**
+	 * @return the tbRoles
+	 */
 	public TbRoles getTbRoles() {
-		return this.tbRoles;
+		return tbRoles;
 	}
 
+	/**
+	 * @param tbRoles the tbRoles to set
+	 */
 	public void setTbRoles(TbRoles tbRoles) {
 		this.tbRoles = tbRoles;
 	}
 
+	/**
+	 * @return the login
+	 */
 	public String getLogin() {
-		return this.login;
+		return login;
 	}
 
+	/**
+	 * @param login the login to set
+	 */
 	public void setLogin(String login) {
 		this.login = login;
 	}
 
+	/**
+	 * @return the password
+	 */
 	public String getPassword() {
-		return this.password;
+		return password;
 	}
 
+	/**
+	 * @param password the password to set
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
 }

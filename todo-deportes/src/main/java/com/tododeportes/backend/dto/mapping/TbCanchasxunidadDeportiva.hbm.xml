@@ -23,8 +23,8 @@
         <property name="disponibleFin" type="timestamp">
             <column name="DISPONIBLE_FIN" length="19" />
         </property>
-        <property name="estado" type="java.lang.Boolean">
+        <many-to-one name="tbEstados" class="com.tododeportes.backend.dto.TbEstados" fetch="join">
             <column name="ESTADO" />
-        </property>
+        </many-to-one>
     </class>
 </hibernate-mapping>

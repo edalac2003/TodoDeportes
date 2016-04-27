@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,6 +20,7 @@ public class UbicacionService {
 
 	@Autowired 
 	UbicacionNGC ubicacionNgc;
+	
 	
 	/**
 	 * @param ubicacionNgc the ubicacionNgc to set
@@ -38,9 +40,19 @@ public class UbicacionService {
 		return ubicacionNgc.listarCiudades();
 	}
 	
+	@RequestMapping(value="/listarCiudadesxDepartamento", method=RequestMethod.GET, produces="application/JSON")
+	public @ResponseBody List<TbCiudades> listarCiudadesxDepartamento(@RequestParam(value="id")int idDepartamento) throws Exception{
+		return ubicacionNgc.listarCiudadesxDepartamento(idDepartamento);
+	}
+	
 	@RequestMapping(value="/listarLocalidades", method=RequestMethod.GET, produces="application/JSON")
 	public @ResponseBody List<TbLocalidades> listarLocalidades() throws Exception{
 		return ubicacionNgc.listarLocalidades();
+	}
+	
+	@RequestMapping(value="/listarLocalidadesxCiudad", method=RequestMethod.GET, produces="application/JSON")
+	public @ResponseBody List<TbLocalidades> listarLocalidadesxCiudad(@RequestParam(value="id")int idCiudad) throws Exception{
+		return ubicacionNgc.listarLocalidadesxCiudad(idCiudad);
 	}
 	
 }

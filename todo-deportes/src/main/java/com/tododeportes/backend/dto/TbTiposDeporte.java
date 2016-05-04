@@ -10,6 +10,7 @@ public class TbTiposDeporte implements java.io.Serializable {
 	private int idtipoDeporte;
 	private String nombre;
 
+	private String mensajeError;
 	
 	/**
 	 * Constructor
@@ -46,4 +47,18 @@ public class TbTiposDeporte implements java.io.Serializable {
 		this.nombre = nombre;
 	}
 
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}
+	
 }

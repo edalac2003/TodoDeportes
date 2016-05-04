@@ -27,7 +27,6 @@ public class PersonaService {
 		try {
 			personaNgc.guardarPersona(persona);
 		} catch (ExcepcionesNGC e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -37,7 +36,6 @@ public class PersonaService {
 		try {
 			personaNgc.actualizarPersona(persona);
 		} catch (ExcepcionesNGC e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

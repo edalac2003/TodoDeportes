@@ -14,7 +14,9 @@ public class TbUnidadesDeportivas implements java.io.Serializable {
 	private String localidad;
 	private String contacto;
 
-
+	private String mensajeError;
+	
+	
 	/**
 	 * Constructor
 	 */
@@ -105,5 +107,21 @@ public class TbUnidadesDeportivas implements java.io.Serializable {
 	public void setContacto(String contacto) {
 		this.contacto = contacto;
 	}
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}
+	
+	
 
 }

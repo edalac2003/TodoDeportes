@@ -14,7 +14,7 @@ public class TbUsuarios implements java.io.Serializable {
 	private String login;
 	private String password;
 
-	
+	private String mensajeError;
 
 	/**
 	 * Constructor 
@@ -128,4 +128,21 @@ public class TbUsuarios implements java.io.Serializable {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}	
+	
 }

@@ -17,6 +17,9 @@ public class TbCanchasxunidadDeportiva implements java.io.Serializable {
 	private Date disponibleFin;
 	private TbEstados tbEstados;
 	
+	private String mensajeError;
+	
+	
 	public TbCanchasxunidadDeportiva() {
 	}
 
@@ -131,6 +134,20 @@ public class TbCanchasxunidadDeportiva implements java.io.Serializable {
 	 */
 	public void setTbEstados(TbEstados tbEstados) {
 		this.tbEstados = tbEstados;
+	}
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
 	}
 
 	

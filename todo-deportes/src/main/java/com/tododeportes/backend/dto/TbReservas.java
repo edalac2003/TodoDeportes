@@ -20,6 +20,7 @@ public class TbReservas implements java.io.Serializable {
 	private BigDecimal valor;
 	private TbEstados tbEstados;
 
+	private String mensajeError;
 	
 	/**
 	 * Constructor
@@ -184,4 +185,21 @@ public class TbReservas implements java.io.Serializable {
 		this.tbEstados = tbEstados;
 	}
 
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
+	}
+
+	
 }

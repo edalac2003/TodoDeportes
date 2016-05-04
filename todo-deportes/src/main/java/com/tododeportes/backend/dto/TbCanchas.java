@@ -12,6 +12,7 @@ public class TbCanchas implements java.io.Serializable {
 	private TbTiposDeporte tbTiposDeporte;
 	private String nombre;
 
+	private String mensajeError;
 	
 	/**
 	 * 
@@ -90,6 +91,22 @@ public class TbCanchas implements java.io.Serializable {
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
 	}
 
 	

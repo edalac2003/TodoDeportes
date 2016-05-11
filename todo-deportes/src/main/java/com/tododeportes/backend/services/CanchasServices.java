@@ -34,7 +34,6 @@ public class CanchasServices {
 		try {
 			canchaNgc.guardarCancha(cancha);
 		} catch (ExcepcionesNGC e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -44,7 +43,6 @@ public class CanchasServices {
 		try {
 			canchaNgc.actualizarCancha(cancha);
 		} catch (ExcepcionesNGC e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -54,7 +52,6 @@ public class CanchasServices {
 		try {
 			listaDeporte = canchaNgc.listarTipoDeporte();
 		} catch (ExcepcionesNGC e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return listaDeporte;
@@ -65,7 +62,6 @@ public class CanchasServices {
 		try {
 			listaEscenarios = canchaNgc.listarTipoEscenario();
 		} catch (ExcepcionesNGC e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 		return listaEscenarios;
@@ -77,7 +73,6 @@ public class CanchasServices {
 		try {
 			cancha = canchaNgc.obtenerCanchaxId(id);
 		} catch (ExcepcionesNGC e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
 		return cancha;
@@ -89,7 +84,6 @@ public class CanchasServices {
 		try {
 			listaCanchas = canchaNgc.listarCanchasTodas();
 		} catch (ExcepcionesNGC e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return listaCanchas;

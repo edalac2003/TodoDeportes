@@ -19,6 +19,16 @@ public class TbTiposDeporte implements java.io.Serializable {
 		super();
 	}
 
+	
+	/**
+	 * @param mensajeError
+	 */
+	public TbTiposDeporte(String mensajeError) {
+		super();
+		this.mensajeError = mensajeError;
+	}
+
+
 	/**
 	 * @return the idtipoDeporte
 	 */

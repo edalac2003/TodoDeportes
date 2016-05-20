@@ -14,7 +14,7 @@
 		
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"> 
 			<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-			<property name="url" value="jdbc:mysql://localhost:3306/tododeportes" />
+			<property name="url" value="jdbc:mysql://localhost:3306/todo_deportes" />
 			<property name="username" value="root" />
 			<property name="password" value="root" />
 		</bean>
@@ -37,7 +37,6 @@
 					<value>com/tododeportes/backend/dto/mapping/TbEstados.hbm.xml</value>
 					<value>com/tododeportes/backend/dto/mapping/TbLocalidades.hbm.xml</value>
 					<value>com/tododeportes/backend/dto/mapping/TbPagos.hbm.xml</value>
-					<value>com/tododeportes/backend/dto/mapping/TbPersonaRol.hbm.xml</value>
 					<value>com/tododeportes/backend/dto/mapping/TbPersonas.hbm.xml</value>
 					<value>com/tododeportes/backend/dto/mapping/TbPreciosCancha.hbm.xml</value>
 					<value>com/tododeportes/backend/dto/mapping/TbReservas.hbm.xml</value>
@@ -73,6 +72,16 @@
         	<property name="sessionFactory" ref="sessionFactory" />
         </bean>
         
+        <bean id="usuarioDao" class="com.tododeportes.backend.dao.hibernate.UsuarioDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <bean id="reservasDao" class="com.tododeportes.backend.dao.hibernate.ReservasDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        
+        
         <!-- SE CREAN LOS BEANS CORRESPONDIENTES A LOS NGC's -->        
         <bean id="ubicacionNgc" class="com.tododeportes.backend.ngc.impl.UbicacionNGCImpl">
         	<property name="ubicacionDao" ref="ubicacionDao" />
@@ -84,6 +93,17 @@
         
         <bean id="canchaNgc" class="com.tododeportes.backend.ngc.impl.CanchasNGCImpl">
         	<property name="canchaDao" ref="canchaDao" />
+        </bean>
+        
+        <bean id="usuarioNgc" class="com.tododeportes.backend.ngc.impl.UsuariosNGCImpl">
+        	<property name="usuariosDao" ref="usuarioDao" />
+        </bean>
+        
+        <bean id="reservasNgc" class="com.tododeportes.backend.ngc.impl.ReservaNGCImpl">
+        	<property name="reservaDao" ref="reservasDao" />
+        	<property name="usuarioDao" ref="usuarioDao" />
+        	<property name="canchaDao" ref="canchaDao" />
+        	<property name="unidadDeportivaDao" ref="uni"></property>
         </bean>
 
 </beans>

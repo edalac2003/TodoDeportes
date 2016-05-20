@@ -1,5 +1,6 @@
 package com.tododeportes.backend.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tododeportes.backend.dto.TbPersonas;
+import com.tododeportes.backend.dto.TbTiposDocumento;
+import com.tododeportes.backend.dto.maestros.MaestroPersona;
 import com.tododeportes.backend.ngc.PersonaNGC;
 import com.tododeportes.backend.util.exception.ExcepcionesNGC;
 
@@ -22,26 +25,16 @@ public class PersonaService {
 	
 	TbPersonas persona;
 	
+	
 	@RequestMapping(value="/guardarPersona", method=RequestMethod.POST)
-	public void guardarPersona(@RequestBody TbPersonas persona){
+	public void guardarPersona(@RequestBody MaestroPersona persona){
 		try {
 			personaNgc.guardarPersona(persona);
 		} catch (ExcepcionesNGC e) {
 			e.printStackTrace();
 		}
 	}
-	
-	@RequestMapping(value="/actualizarPersona", method=RequestMethod.PUT)
-	public void actualizarPersona(@RequestBody TbPersonas persona){
-		try {
-			personaNgc.actualizarPersona(persona);
-		} catch (ExcepcionesNGC e) {
-			e.printStackTrace();
-		}
-	}
-	
-	
-	
+		
 	@RequestMapping(value="/obtenerPersonaxId", method=RequestMethod.GET)
 	public @ResponseBody TbPersonas obtenerPersonaxId(@RequestParam(value="id")String id){
 		try {
@@ -55,8 +48,32 @@ public class PersonaService {
 	}
 	
 	@RequestMapping(value="/listarPersonas", method=RequestMethod.GET)
-	public @ResponseBody List<TbPersonas> listarPersonas() throws Exception{
-		return personaNgc.listaPersonas();
+	public @ResponseBody List<TbPersonas> listarPersonas(){
+		List<TbPersonas> lista = null;
+		try {
+			lista = personaNgc.listaPersonas();
+		} catch (ExcepcionesNGC e) {
+			lista = new ArrayList<>();
+			persona = new TbPersonas(e.getMensajeUsuario());
+			lista.add(persona);
+		}
+		return lista;
+	}
+	
+	
+	@RequestMapping(value="/listarTipoDocumento", method=RequestMethod.GET, produces="application/JSON")
+	public @ResponseBody List<TbTiposDocumento> listarTipoDocumento(){
+		List<TbTiposDocumento> lista = null;
+		TbTiposDocumento tipoDocumento = null;
+		try {
+			lista = personaNgc.listarTipoDocumento();
+		} catch (ExcepcionesNGC e) {
+			tipoDocumento = new TbTiposDocumento();
+			tipoDocumento.setMensajeError(e.getMensajeUsuario());
+			lista = new ArrayList<>();
+			lista.add(tipoDocumento);
+		}
+		return lista;
 	}
 
 }

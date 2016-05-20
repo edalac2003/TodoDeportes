@@ -11,6 +11,7 @@ public class TbTiposDocumento implements java.io.Serializable {
 	private String descripcion;
 	private String abreviado;
 	
+	private String mensajeError;
 
 	/**
 	 * 
@@ -18,6 +19,17 @@ public class TbTiposDocumento implements java.io.Serializable {
 	public TbTiposDocumento() {
 		super();
 	}
+	
+
+	/**
+	 * @param mensajeError
+	 */
+	public TbTiposDocumento(String mensajeError) {
+		super();
+		this.mensajeError = mensajeError;
+	}
+
+
 
 	/**
 	 * @return the idtipoDocumento
@@ -59,6 +71,20 @@ public class TbTiposDocumento implements java.io.Serializable {
 	 */
 	public void setAbreviado(String abreviado) {
 		this.abreviado = abreviado;
+	}
+
+	/**
+	 * @return the mensajeError
+	 */
+	public String getMensajeError() {
+		return mensajeError;
+	}
+
+	/**
+	 * @param mensajeError the mensajeError to set
+	 */
+	public void setMensajeError(String mensajeError) {
+		this.mensajeError = mensajeError;
 	}
 
 }

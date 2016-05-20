@@ -3,13 +3,16 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 26/03/2016 03:44:36 PM by Hibernate Tools 4.3.1.Final -->
 <hibernate-mapping>
-    <class name="com.tododeportes.backend.dto.TbReservas" table="tb_reservas" catalog="tododeportes" optimistic-lock="version">
+    <class name="com.tododeportes.backend.dto.TbReservas" table="tb_reservas" catalog="todo_deportes" optimistic-lock="version">
         <id name="idreserva" type="int">
             <column name="IDRESERVA" />
-            <generator class="assigned" />
+            <generator class="increment" />
         </id>
         <many-to-one name="tbCanchasxunidadDeportiva" class="com.tododeportes.backend.dto.TbCanchasxunidadDeportiva" fetch="join">
             <column name="ESCENARIO" />
+        </many-to-one>
+        <many-to-one name="tbUsuarios" class="com.tododeportes.backend.dto.TbReservas" fetch="join">
+            <column name="USUARIO" />
         </many-to-one>
         <property name="fecha" type="timestamp">
             <column name="FECHA" length="19" />
@@ -19,9 +22,6 @@
         </property>
         <property name="horaFin" type="timestamp">
             <column name="HORA_FIN" length="19" />
-        </property>
-        <property name="usuario" type="java.lang.Integer">
-            <column name="USUARIO" />
         </property>
         <property name="tiempo" type="java.lang.Integer">
             <column name="TIEMPO" />

@@ -14,6 +14,7 @@ import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.tododeportes.backend.dao.CanchasDAO;
 import com.tododeportes.backend.dto.TbCanchas;
+import com.tododeportes.backend.dto.TbCanchasxunidadDeportiva;
 import com.tododeportes.backend.dto.TbTipoEscenario;
 import com.tododeportes.backend.dto.TbTiposDeporte;
 import com.tododeportes.backend.util.exception.ExcepcionesDAO;
@@ -85,6 +86,33 @@ public class CanchasDAOHibernate extends HibernateDaoSupport implements CanchasD
 			session = getSession();
 			Criteria criteria = session.createCriteria(TbCanchas.class).add(Restrictions.eq("idcancha", idCancha));
 			cancha = (TbCanchas)criteria.uniqueResult();
+		}catch(HibernateException e){
+			expDao = new ExcepcionesDAO();
+			expDao.setMensajeTecnico(e.getMessage());
+			expDao.setMensajeUsuario("Se presentaron Errores al intentar Obtener el Registro de Cancha.");
+			expDao.setOrigen(e);
+			throw expDao;
+		}finally{
+			session.close();
+		}
+		
+		return cancha;
+	}
+	
+
+	/* (non-Javadoc)
+	 * @see com.tododeportes.backend.dao.CanchasDAO#obtenerCanchaxUnidadDeportiva(int)
+	 */
+	@SuppressWarnings("deprecation")
+	@Override
+	public TbCanchasxunidadDeportiva obtenerCanchaxUnidadDeportiva(int idCancha) throws ExcepcionesDAO {
+		Session session = null;
+		TbCanchasxunidadDeportiva cancha = null;
+		
+		try{
+			session = getSession();
+			Criteria criteria = session.createCriteria(TbCanchasxunidadDeportiva.class).add(Restrictions.eq("idcanchaUnidad", idCancha));
+			cancha = (TbCanchasxunidadDeportiva)criteria.uniqueResult();
 		}catch(HibernateException e){
 			expDao = new ExcepcionesDAO();
 			expDao.setMensajeTecnico(e.getMessage());
@@ -179,27 +207,6 @@ public class CanchasDAOHibernate extends HibernateDaoSupport implements CanchasD
 		}
 		
 		return listaEscenarios;
-	}
-
-	@SuppressWarnings({ "deprecation", "unchecked" })
-	@Override
-	public List<TbCanchas> listarTodasCanchas() throws ExcepcionesDAO {
-		Session session = null;
-		List<TbCanchas> listaCanchas = null;
-		
-		try{
-			session = getSession();
-			Criteria criteria = session.createCriteria(TbCanchas.class);
-			listaCanchas = criteria.list();
-		}catch(HibernateException e){
-			expDao = new ExcepcionesDAO();
-			expDao.setMensajeTecnico(e.getMessage());
-			expDao.setMensajeUsuario("Se presentaron Errores al intentar listar .");
-			expDao.setOrigen(e);
-		}finally{
-			session.close();
-		}
-		return listaCanchas;
 	}
 
 	

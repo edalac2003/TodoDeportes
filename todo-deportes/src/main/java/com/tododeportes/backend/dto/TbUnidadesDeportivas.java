@@ -11,7 +11,7 @@ public class TbUnidadesDeportivas implements java.io.Serializable {
 	private String nombre;
 	private String direccion;
 	private String telefono;
-	private String localidad;
+	private TbLocalidades localidad;
 	private String contacto;
 
 	private String mensajeError;
@@ -83,14 +83,14 @@ public class TbUnidadesDeportivas implements java.io.Serializable {
 	/**
 	 * @return the localidad
 	 */
-	public String getLocalidad() {
+	public TbLocalidades getLocalidad() {
 		return localidad;
 	}
 
 	/**
 	 * @param localidad the localidad to set
 	 */
-	public void setLocalidad(String localidad) {
+	public void setLocalidad(TbLocalidades localidad) {
 		this.localidad = localidad;
 	}
 

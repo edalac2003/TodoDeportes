@@ -22,7 +22,7 @@ public class TbPreciosCancha implements java.io.Serializable {
 	private Date horaFin;
 	private Long valorHora;
 	private Long descuento;
-	
+	private TbCanchas tbCanchas;
 
 	/**
 	 * Constructor
@@ -211,6 +211,20 @@ public class TbPreciosCancha implements java.io.Serializable {
 	 */
 	public void setDescuento(Long descuento) {
 		this.descuento = descuento;
+	}
+
+	/**
+	 * @return the tbCanchas
+	 */
+	public TbCanchas getTbCanchas() {
+		return tbCanchas;
+	}
+
+	/**
+	 * @param tbCanchas the tbCanchas to set
+	 */
+	public void setTbCanchas(TbCanchas tbCanchas) {
+		this.tbCanchas = tbCanchas;
 	}
 
 }

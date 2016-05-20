@@ -15,7 +15,7 @@ public class TbReservas implements java.io.Serializable {
 	private Date fecha;
 	private Date horaInicio;
 	private Date horaFin;
-	private Integer usuario;
+	private TbUsuarios tbUsuarios;
 	private Integer tiempo;
 	private BigDecimal valor;
 	private TbEstados tbEstados;
@@ -29,30 +29,13 @@ public class TbReservas implements java.io.Serializable {
 		super();
 	}
 	
-
+	
 	/**
-	 * @param idreserva
-	 * @param tbCanchasxunidadDeportiva
-	 * @param fecha
-	 * @param horaInicio
-	 * @param horaFin
-	 * @param usuario
-	 * @param tiempo
-	 * @param valor
-	 * @param tbEstados
+	 * @param mensajeError
 	 */
-	public TbReservas(int idreserva, TbCanchasxunidadDeportiva tbCanchasxunidadDeportiva, Date fecha, Date horaInicio,
-			Date horaFin, Integer usuario, Integer tiempo, BigDecimal valor, TbEstados tbEstados) {
+	public TbReservas(String mensajeError) {
 		super();
-		this.idreserva = idreserva;
-		this.tbCanchasxunidadDeportiva = tbCanchasxunidadDeportiva;
-		this.fecha = fecha;
-		this.horaInicio = horaInicio;
-		this.horaFin = horaFin;
-		this.usuario = usuario;
-		this.tiempo = tiempo;
-		this.valor = valor;
-		this.tbEstados = tbEstados;
+		this.mensajeError = mensajeError;
 	}
 
 
@@ -130,18 +113,19 @@ public class TbReservas implements java.io.Serializable {
 	}
 
 	/**
-	 * @return the usuario
+	 * @return the tbUsuarios
 	 */
-	public Integer getUsuario() {
-		return usuario;
+	public TbUsuarios getTbUsuarios() {
+		return tbUsuarios;
 	}
 
 	/**
-	 * @param usuario the usuario to set
+	 * @param tbUsuarios the tbUsuarios to set
 	 */
-	public void setUsuario(Integer usuario) {
-		this.usuario = usuario;
+	public void setTbUsuarios(TbUsuarios tbUsuarios) {
+		this.tbUsuarios = tbUsuarios;
 	}
+
 
 	/**
 	 * @return the tiempo

@@ -18,16 +18,14 @@ public class TbRoles implements java.io.Serializable {
 		super();
 	}
 
-
 	/**
 	 * @param idrol
-	 * @param nombre
 	 */
-	public TbRoles(int idrol, String nombre) {
+	public TbRoles(int idrol) {
 		super();
 		this.idrol = idrol;
-		this.nombre = nombre;
 	}
+
 
 
 	/**

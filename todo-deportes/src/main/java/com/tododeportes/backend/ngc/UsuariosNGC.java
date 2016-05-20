@@ -7,9 +7,7 @@ public interface UsuariosNGC {
 
 	public void guardarUsuario(TbUsuarios usuario) throws ExcepcionesNGC;
 	
-	public void actualizarUsuario(TbUsuarios usuario) throws ExcepcionesNGC;
+	public TbUsuarios obtenerUsuarioxLogin(String login) throws ExcepcionesNGC;
 	
-	public void obtenerUsuarioxLogin(String login) throws ExcepcionesNGC;
-	
-	public void obtenerUsuarioxPersona(String numeroDocumento) throws ExcepcionesNGC;
+	public boolean validarUsuario(String login, String password) throws ExcepcionesNGC;
 }

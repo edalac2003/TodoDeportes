@@ -28,6 +28,16 @@ public class TbPersonas implements java.io.Serializable {
 		super();
 	}
 
+	
+	/**
+	 * @param mensajeError
+	 */
+	public TbPersonas(String mensajeError) {
+		super();
+		this.mensajeError = mensajeError;
+	}
+
+
 	/**
 	 * @param idpersona
 	 * @param tbCiudades

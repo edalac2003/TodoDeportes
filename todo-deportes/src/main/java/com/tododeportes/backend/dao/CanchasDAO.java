@@ -30,9 +30,7 @@ public interface CanchasDAO {
 	
 	public List<TbCanchas> listarCanchasTodas() throws ExcepcionesDAO;
 		
-	public List<TbTiposDeporte> listarTipoDeporte() throws ExcepcionesDAO;
 	
-	public List<TbTipoEscenario> listarTipoEscenario() throws ExcepcionesDAO;
 	
 	
 	

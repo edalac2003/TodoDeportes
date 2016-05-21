@@ -8,10 +8,10 @@
             <column name="IDCANCHA_UNIDAD" />
             <generator class="increment" />
         </id>
-        <many-to-one name="tbCanchas" class="com.tododeportes.backend.dto.TbCanchas" fetch="join">
+        <many-to-one name="tbCanchas" class="com.tododeportes.backend.dto.TbCanchas" fetch="join" lazy="false">
             <column name="CANCHA" />
         </many-to-one>
-        <many-to-one name="tbUnidadesDeportivas" class="com.tododeportes.backend.dto.TbUnidadesDeportivas" fetch="join">
+        <many-to-one name="tbUnidadesDeportivas" class="com.tododeportes.backend.dto.TbUnidadesDeportivas" fetch="join" lazy="false">
             <column name="UNIDAD_DEPORTIVA" />
         </many-to-one>
         <property name="nombre" type="string">

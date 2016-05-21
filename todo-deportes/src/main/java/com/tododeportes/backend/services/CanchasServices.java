@@ -1,5 +1,6 @@
 package com.tododeportes.backend.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tododeportes.backend.dto.TbCanchas;
 import com.tododeportes.backend.dto.TbTipoEscenario;
 import com.tododeportes.backend.dto.TbTiposDeporte;
+import com.tododeportes.backend.dto.maestros.MaestroCanchas;
+import com.tododeportes.backend.dto.maestros.MaestroCanchaxUnidad;
 import com.tododeportes.backend.ngc.CanchaNGC;
+import com.tododeportes.backend.ngc.TipoDeporteNGC;
+import com.tododeportes.backend.ngc.TipoEscenarioNGC;
 import com.tododeportes.backend.util.exception.ExcepcionesNGC;
 
 @RestController
@@ -22,6 +27,11 @@ public class CanchasServices {
 	
 	@Autowired
 	CanchaNGC canchaNgc;
+	@Autowired
+	TipoDeporteNGC tipoDeporteNgc;
+	@Autowired
+	TipoEscenarioNGC tipoEscenarioNgc;
+	
 	
 	private List<TbTipoEscenario> listaEscenarios = null;
 	private List<TbTiposDeporte> listaDeporte = null;
@@ -29,8 +39,8 @@ public class CanchasServices {
 	private TbCanchas cancha = null;
 	
 	
-	@RequestMapping(value="/guardarCancha", method=RequestMethod.POST)
-	public void guardarCancha(@RequestBody TbCanchas cancha){
+	@RequestMapping(value="/guardarCancha", method=RequestMethod.POST, consumes="application/JSON")
+	public void guardarCancha(@RequestBody MaestroCanchas cancha) throws Exception{
 		try {
 			canchaNgc.guardarCancha(cancha);
 		} catch (ExcepcionesNGC e) {
@@ -38,8 +48,12 @@ public class CanchasServices {
 		}
 	}
 	
+	public void guardarCanchaxUnidad(MaestroCanchaxUnidad cancha) throws Exception{
+		
+	}
+	
 	@RequestMapping(value="/actualizarCancha", method=RequestMethod.POST)
-	public void actualizarCancha(@RequestBody TbCanchas cancha){
+	public void actualizarCancha(@RequestBody MaestroCanchas cancha) throws Exception{
 		try {
 			canchaNgc.actualizarCancha(cancha);
 		} catch (ExcepcionesNGC e) {
@@ -48,43 +62,46 @@ public class CanchasServices {
 	}
 	
 	@RequestMapping(value="/listarTipoDeporte", method=RequestMethod.GET)
-	public @ResponseBody List<TbTiposDeporte> listarTipoDeporte(){
+	public @ResponseBody List<TbTiposDeporte> listarTipoDeporte() throws Exception{
 		try {
-			listaDeporte = canchaNgc.listarTipoDeporte();
+			listaDeporte = tipoDeporteNgc.listarTipoDeporte();
 		} catch (ExcepcionesNGC e) {
-			e.printStackTrace();
+			listaDeporte = new ArrayList<>();
+			listaDeporte.add(new TbTiposDeporte(e.getMensajeUsuario()));
 		}
 		return listaDeporte;
 	}
 	
 	@RequestMapping(value="/listarTipoEscenario", method=RequestMethod.GET)
-	public @ResponseBody List<TbTipoEscenario> listarTipoEscenario(){
+	public @ResponseBody List<TbTipoEscenario> listarTipoEscenario() throws Exception{
 		try {
-			listaEscenarios = canchaNgc.listarTipoEscenario();
+			listaEscenarios = tipoEscenarioNgc.listarTipoEscenario();
 		} catch (ExcepcionesNGC e) {
-			e.printStackTrace();
+			listaEscenarios = new ArrayList<>();
+			listaEscenarios.add(new TbTipoEscenario(e.getMensajeUsuario()));
 		}		
 		return listaEscenarios;
 	}
 	
 	
 	@RequestMapping(value="/obtenerCanchaxId", method=RequestMethod.GET)
-	public @ResponseBody TbCanchas obtenerCanchaxId(@RequestParam(value="id")int id){
+	public @ResponseBody TbCanchas obtenerCanchaxId(@RequestParam(value="id")int id) throws Exception{
 		try {
 			cancha = canchaNgc.obtenerCanchaxId(id);
 		} catch (ExcepcionesNGC e) {
-			e.printStackTrace();
+			cancha.setMensajeError(e.getMensajeUsuario());
 		}		
 		return cancha;
 	}
 	
 	
 	@RequestMapping(value="/listarCanchasTodas", method=RequestMethod.GET)
-	public @ResponseBody List<TbCanchas> listarCanchasTodas(){
+	public @ResponseBody List<TbCanchas> listarCanchasTodas() throws Exception{
 		try {
 			listaCanchas = canchaNgc.listarCanchasTodas();
 		} catch (ExcepcionesNGC e) {
-			e.printStackTrace();
+			listaCanchas = new ArrayList<>();
+			listaCanchas.add(new TbCanchas(e.getMensajeUsuario()));
 		}
 		return listaCanchas;
 	}

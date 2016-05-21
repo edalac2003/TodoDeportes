@@ -1,5 +1,6 @@
 package com.tododeportes.backend.ngc.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tododeportes.backend.dao.PersonaDAO;
@@ -13,6 +14,8 @@ import com.tododeportes.backend.dto.TbTiposDocumento;
 import com.tododeportes.backend.dto.TbUsuarios;
 import com.tododeportes.backend.dto.maestros.MaestroPersona;
 import com.tododeportes.backend.ngc.PersonaNGC;
+import com.tododeportes.backend.ngc.UbicacionNGC;
+import com.tododeportes.backend.ngc.UsuariosNGC;
 import com.tododeportes.backend.util.exception.ExcepcionesDAO;
 import com.tododeportes.backend.util.exception.ExcepcionesNGC;
 
@@ -21,20 +24,18 @@ public class PersonaNGCImpl implements PersonaNGC {
 	ExcepcionesNGC expNgc;
 	
 	PersonaDAO personaDao;
-	UsuariosDAO usuarioDao;
-	UbicacionDAO ubicacionDao;
-	
+	UsuariosNGC usuarioNGC;
+	UbicacionNGC ubicacionNgc;;
 	
 
 	public void setPersonaDao(PersonaDAO personaDao) {
 		this.personaDao = personaDao;
 	}
-	
-	/**
-	 * @param usuarioDao the usuarioDao to set
-	 */
-	public void setUsuarioDao(UsuariosDAO usuarioDao) {
-		this.usuarioDao = usuarioDao;
+	public void setUsuarioNGC(UsuariosNGC usuarioNGC) {
+		this.usuarioNGC = usuarioNGC;
+	}
+	public void setUbicacionNgc(UbicacionNGC ubicacionNgc) {
+		this.ubicacionNgc = ubicacionNgc;
 	}
 
 	@Override
@@ -47,29 +48,30 @@ public class PersonaNGCImpl implements PersonaNGC {
 		if(maestroPersona == null){
 			expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeUsuario("El Registro de la Persona no puede ser Null.");
+			persona = new TbPersonas(expNgc.getMensajeUsuario());
 			throw expNgc;
 		}		
 		String mensajeError = validarMaestroPersona(maestroPersona);
 		if(!mensajeError.isEmpty()){
 			expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeUsuario("Se requiere información en los siguientes campos. <br>"+mensajeError);
+			persona = new TbPersonas(expNgc.getMensajeUsuario());
 			throw expNgc;
-		}	
-		
-		
-		
+		}			
 		try {
 			tipoDocumento = personaDao.obtenerTipoDocumento(maestroPersona.getIdTipoDocumento());
-			ciudad = ubicacionDao.obtenerCiudad(maestroPersona.getIdCiudad());
+			ciudad = ubicacionNgc.obtenerCiudad(maestroPersona.getIdCiudad());
 			
 			if(tipoDocumento== null){
 				expNgc = new ExcepcionesNGC();
 				expNgc.setMensajeUsuario("No se encuentra registro de Tipo Documento asociado al ID suministrado.");
+				persona = new TbPersonas(expNgc.getMensajeUsuario());
 				throw expNgc;
 			}
 			if(ciudad == null){
 				expNgc = new ExcepcionesNGC();
 				expNgc.setMensajeUsuario("No se encuentra registro de Ciudad asociado al ID suministrado.");
+				persona = new TbPersonas(expNgc.getMensajeUsuario());
 				throw expNgc;
 			}			
 			
@@ -79,12 +81,14 @@ public class PersonaNGCImpl implements PersonaNGC {
 				persona = new TbPersonas();
 			
 			//Se comprueba si incorpora informacion de login.
-			if (maestroPersona.getLogin() != null){
-				usuario = usuarioDao.obtenerUsuarioxLogin(maestroPersona.getLogin());
-				
-				//Se comprueba si el registro de usuario(login) existe.
-				if(usuario == null)
-					usuario = new TbUsuarios();				
+			if (maestroPersona.getLogin() != null && !maestroPersona.getLogin().isEmpty()){
+				usuario = usuarioNGC.obtenerUsuarioxLogin(maestroPersona.getLogin());
+				if(usuario != null){
+//					expNgc = new ExcepcionesNGC();
+//					expNgc.setMensajeUsuario("No es posible guardar el registro porque el Login ya Existe.");
+//					persona.setMensajeError(expNgc.getMensajeUsuario());
+					return;
+				}                                                        
 			}		
 			
 			persona.setApellidos(maestroPersona.getApellidos());
@@ -97,7 +101,8 @@ public class PersonaNGCImpl implements PersonaNGC {
 			persona.setTbCiudades(ciudad);
 			persona.setTbTiposDocumento(tipoDocumento);
 			
-			if(usuario != null){
+			if(usuario == null && !maestroPersona.getLogin().isEmpty()){
+				usuario = new TbUsuarios();
 				usuario.setLogin(maestroPersona.getLogin());
 				usuario.setPassword(maestroPersona.getPassword());
 				usuario.setTbEstados(new TbEstados(8));
@@ -112,29 +117,33 @@ public class PersonaNGCImpl implements PersonaNGC {
 			expNgc.setMensajeTecnico(e.getMensajeTecnico());
 			expNgc.setMensajeUsuario(e.getMensajeUsuario());
 			expNgc.setOrigen(e.getOrigen());
+			persona = new TbPersonas(expNgc.getMensajeUsuario());
 			throw expNgc;
-		}
-		
+		}		
 	}
 
 
 	@Override
 	public TbPersonas obtenerPersonaxDocumento(String idDocumento) throws ExcepcionesNGC {
-		TbPersonas persona = null;
+		TbPersonas persona = new TbPersonas();
 		
 		if(!idDocumento.isEmpty()){
 			try {
 				persona = personaDao.obtenerPersonaxDocumento(idDocumento);
+				if(persona == null)
+					persona = new TbPersonas("No se encontró registro de Persona con el numero de Documento "+idDocumento);
 			} catch (ExcepcionesDAO e) {
 				expNgc = new ExcepcionesNGC();
 				expNgc.setMensajeTecnico(e.getMensajeTecnico());
 				expNgc.setMensajeUsuario(e.getMensajeUsuario());
 				expNgc.setOrigen(e.getOrigen());
+				persona.setMensajeError(expNgc.getMensajeUsuario());
 				throw expNgc;
 			}
 		}else{
 			expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeUsuario("No es posible realizar la consulta porque el Id Documento no es v&aacutelido.");
+			persona.setMensajeError(expNgc.getMensajeUsuario());
 			throw expNgc;			
 		}
 		
@@ -147,11 +156,17 @@ public class PersonaNGCImpl implements PersonaNGC {
 		
 		try {
 			listaPersonas = personaDao.listarTodasPersonas();
+			if(listaPersonas == null){
+				listaPersonas = new ArrayList<>();
+				listaPersonas.add(new TbPersonas("No se encontraron Registros en la Base de Datos."));
+			}				
 		} catch (ExcepcionesDAO e) {
 			expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeTecnico(e.getMensajeTecnico());
 			expNgc.setMensajeUsuario(e.getMensajeUsuario());
 			expNgc.setOrigen(e.getOrigen());
+			listaPersonas = new ArrayList<>();
+			listaPersonas.add(new TbPersonas(expNgc.getMensajeUsuario()));
 			throw expNgc;
 		}
 		
@@ -168,10 +183,16 @@ public class PersonaNGCImpl implements PersonaNGC {
 		
 		try {
 			lista = personaDao.listarTipoDocumento();
+			if(lista == null){
+				lista = new ArrayList<>();
+				lista.add(new TbTiposDocumento("No se encontraron Registros."));
+			}
 		} catch (ExcepcionesDAO e) {expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeTecnico(e.getMensajeTecnico());
 			expNgc.setMensajeUsuario(e.getMensajeUsuario());
 			expNgc.setOrigen(e.getOrigen());
+			lista = new ArrayList<>();
+			lista.add(new TbTiposDocumento(e.getMensajeUsuario()));
 			throw expNgc;
 		}
 		

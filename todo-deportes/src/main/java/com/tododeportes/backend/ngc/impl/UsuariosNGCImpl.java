@@ -48,15 +48,27 @@ public class UsuariosNGCImpl implements UsuariosNGC {
 	@Override
 	public TbUsuarios obtenerUsuarioxLogin(String login) throws ExcepcionesNGC {
 		TbUsuarios tbUsuario = null;
-		try {
-			tbUsuario = usuariosDao.obtenerUsuarioxLogin(login);
-		} catch (ExcepcionesDAO e) {
+		
+		if(login != null && !login.isEmpty()){
+			try {
+				tbUsuario = usuariosDao.obtenerUsuarioxLogin(login);
+				if(tbUsuario == null)
+					tbUsuario = new TbUsuarios("No se encontró el Registro de usuario.");
+			} catch (ExcepcionesDAO e) {
+				expNgc = new ExcepcionesNGC();
+				expNgc.setMensajeTecnico(e.getMensajeTecnico());
+				expNgc.setMensajeUsuario(e.getMensajeUsuario());
+				expNgc.setOrigen(e.getOrigen());
+				tbUsuario = new TbUsuarios(e.getMensajeUsuario());
+				throw expNgc;
+			}
+		}else{
 			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeTecnico(e.getMensajeTecnico());
-			expNgc.setMensajeUsuario(e.getMensajeUsuario());
-			expNgc.setOrigen(e.getOrigen());
+			expNgc.setMensajeUsuario("No es posible realizar la consulta porque el Login está vacio.");
+			tbUsuario = new TbUsuarios(expNgc.getMensajeUsuario());
 			throw expNgc;
 		}
+		
 		
 		return tbUsuario;
 	}

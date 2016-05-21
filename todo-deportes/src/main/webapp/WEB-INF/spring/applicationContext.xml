@@ -60,15 +60,35 @@
         </bean>
         
 		<!-- SE CREAN LOS BEANS CORRESPONDIENTES A LOS DAO's -->        
-        <bean id="ubicacionDao" class="com.tododeportes.backend.dao.hibernate.UbicacionDAOHibernate">
+        <bean id="canchaDao" class="com.tododeportes.backend.dao.hibernate.CanchasDAOHibernate">
         	<property name="sessionFactory" ref="sessionFactory" />
-        </bean>
+        </bean>        
         
         <bean id="personaDao" class="com.tododeportes.backend.dao.hibernate.PersonaDAOHibernate">
         	<property name="sessionFactory" ref="sessionFactory" />
         </bean>
         
-        <bean id="canchaDao" class="com.tododeportes.backend.dao.hibernate.CanchasDAOHibernate">
+        <bean id="preciosDao" class="com.tododeportes.backend.dao.hibernate.PreciosDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <bean id="reservasDao" class="com.tododeportes.backend.dao.hibernate.ReservasDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>        
+        
+        <bean id="tipoDeporteDao" class="com.tododeportes.backend.dao.hibernate.TipoDeportesDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <bean id="tipoEscenearioDao" class="com.tododeportes.backend.dao.hibernate.TipoEscenarioDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <bean id="ubicacionDao" class="com.tododeportes.backend.dao.hibernate.UbicacionDAOHibernate">
+        	<property name="sessionFactory" ref="sessionFactory" />
+        </bean>
+        
+        <bean id="unidadDeportivaDao" class="com.tododeportes.backend.dao.hibernate.UnidadDeportivaDAOHibernate">
         	<property name="sessionFactory" ref="sessionFactory" />
         </bean>
         
@@ -76,34 +96,50 @@
         	<property name="sessionFactory" ref="sessionFactory" />
         </bean>
         
-        <bean id="reservasDao" class="com.tododeportes.backend.dao.hibernate.ReservasDAOHibernate">
-        	<property name="sessionFactory" ref="sessionFactory" />
-        </bean>
-        
-        
         
         <!-- SE CREAN LOS BEANS CORRESPONDIENTES A LOS NGC's -->        
-        <bean id="ubicacionNgc" class="com.tododeportes.backend.ngc.impl.UbicacionNGCImpl">
-        	<property name="ubicacionDao" ref="ubicacionDao" />
+        <bean id="canchaNgc" class="com.tododeportes.backend.ngc.impl.CanchasNGCImpl">
+        	<property name="canchaDao" ref="canchaDao" />
+        	<property name="tipoEscenarioNgc" ref="tipoEscenarioNgc" />
+        	<property name="tipoDeporteNgc" ref="tipoDeporteNgc" />
         </bean>
         
         <bean id="personaNgc" class="com.tododeportes.backend.ngc.impl.PersonaNGCImpl">
         	<property name="personaDao" ref="personaDao" />
-        </bean>
-        
-        <bean id="canchaNgc" class="com.tododeportes.backend.ngc.impl.CanchasNGCImpl">
-        	<property name="canchaDao" ref="canchaDao" />
-        </bean>
-        
-        <bean id="usuarioNgc" class="com.tododeportes.backend.ngc.impl.UsuariosNGCImpl">
-        	<property name="usuariosDao" ref="usuarioDao" />
+        	<property name="usuarioNGC" ref="usuarioNgc" />
+        	<property name="ubicacionNgc" ref="ubicacionNgc" />
         </bean>
         
         <bean id="reservasNgc" class="com.tododeportes.backend.ngc.impl.ReservaNGCImpl">
         	<property name="reservaDao" ref="reservasDao" />
         	<property name="usuarioDao" ref="usuarioDao" />
         	<property name="canchaDao" ref="canchaDao" />
-        	<property name="unidadDeportivaDao" ref="uni"></property>
+        	<property name="unidadDeportivaDao" ref="unidadDeportivaDao" />
         </bean>
+        
+        <bean id="tipoDeporteNgc" class="com.tododeportes.backend.ngc.impl.TipoDeportesNGCImpl">
+        	<property name="tipoDeporteDao" ref="tipoDeporteDao" />
+        </bean>
+        
+        <bean id="tipoEscenarioNgc" class="com.tododeportes.backend.ngc.impl.TipoEscenarioNGCImpl">
+        	<property name="tipoEscenarioDao" ref="tipoEscenearioDao" />
+        </bean>
+        
+        
+        <bean id="ubicacionNgc" class="com.tododeportes.backend.ngc.impl.UbicacionNGCImpl">
+        	<property name="ubicacionDao" ref="ubicacionDao" />
+        </bean>
+        
+        <bean id="unidadDeportivaNgc" class="com.tododeportes.backend.ngc.impl.UnidadDeportivaNGCImpl">
+        	<property name="unidadDeportivaDao" ref="unidadDeportivaDao" />
+        	<property name="ubicacionDao" ref="ubicacionDao" />
+        	<property name="canchaDao" ref="canchaDao" />
+        </bean>       
+        
+        <bean id="usuarioNgc" class="com.tododeportes.backend.ngc.impl.UsuariosNGCImpl">
+        	<property name="usuariosDao" ref="usuarioDao" />
+        </bean>
+        
+        
 
 </beans>

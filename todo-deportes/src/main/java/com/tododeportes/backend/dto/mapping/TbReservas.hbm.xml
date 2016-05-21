@@ -26,7 +26,7 @@
         <property name="tiempo" type="java.lang.Integer">
             <column name="TIEMPO" />
         </property>
-        <property name="valor" type="big_decimal">
+        <property name="valor" type="java.lang.Long">
             <column name="VALOR" precision="12" />
         </property>
         <many-to-one name="tbEstados" class="com.tododeportes.backend.dto.TbEstados" fetch="join">

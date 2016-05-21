@@ -6,8 +6,8 @@ public class MaestroUnidadDeportiva {
 	private String direccion;
 	private String telefono;
 	private String contacto;
-	private Long idLocalidad;
-	private Long estado;
+	private Integer idLocalidad;
+	private Integer estado;
 	
 	public MaestroUnidadDeportiva() {
 	}
@@ -71,28 +71,28 @@ public class MaestroUnidadDeportiva {
 	/**
 	 * @return the idLocalidad
 	 */
-	public Long getIdLocalidad() {
+	public Integer getIdLocalidad() {
 		return idLocalidad;
 	}
 
 	/**
 	 * @param idLocalidad the idLocalidad to set
 	 */
-	public void setIdLocalidad(Long idLocalidad) {
+	public void setIdLocalidad(Integer idLocalidad) {
 		this.idLocalidad = idLocalidad;
 	}
 
 	/**
 	 * @return the estado
 	 */
-	public Long getEstado() {
+	public Integer getEstado() {
 		return estado;
 	}
 
 	/**
 	 * @param estado the estado to set
 	 */
-	public void setEstado(Long estado) {
+	public void setEstado(Integer estado) {
 		this.estado = estado;
 	}
 

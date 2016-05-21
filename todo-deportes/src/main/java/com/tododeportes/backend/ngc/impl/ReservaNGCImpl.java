@@ -1,6 +1,6 @@
 package com.tododeportes.backend.ngc.impl;
 
-import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tododeportes.backend.dao.CanchasDAO;
@@ -72,17 +72,19 @@ public class ReservaNGCImpl implements ReservaNGC {
 							reserva.setTiempo(maestroReserva.getTiempo());
 							reserva.setTbCanchasxunidadDeportiva(cancha);
 							reserva.setTbUsuarios(usuario);
-							reserva.setValor(BigDecimal.valueOf(maestroReserva.getValorHora()));
+							reserva.setValor(maestroReserva.getValorHora());
 							reserva.setTbEstados(new TbEstados(4));
 							reservaDao.guardarReserva(reserva);
-						}else{
+						}else{							
 							expNgc = new ExcepcionesNGC();
 							expNgc.setMensajeUsuario("No se encuentra una cancha asociada al ID suministrado.");
+							reserva.setMensajeError(expNgc.getMensajeUsuario());
 							throw expNgc;
 						}
 					}else{
 						expNgc = new ExcepcionesNGC();
 						expNgc.setMensajeUsuario("No se encuentra un Usuario asociado al Login suministrado.");
+						reserva.setMensajeError(expNgc.getMensajeUsuario());
 						throw expNgc;
 					}					
 				} catch (ExcepcionesDAO e) {
@@ -90,18 +92,21 @@ public class ReservaNGCImpl implements ReservaNGC {
 					expNgc.setMensajeTecnico(e.getMensajeTecnico());
 					expNgc.setMensajeUsuario(e.getMensajeUsuario());
 					expNgc.setOrigen(e.getOrigen());
+					reserva.setMensajeError(expNgc.getMensajeUsuario());
 					throw expNgc;
 				}
 				
 			}else{
 				expNgc = new ExcepcionesNGC();
 				expNgc.setMensajeUsuario(mensajeError);
+				reserva.setMensajeError(mensajeError);
 				throw expNgc;
 			}
 			
 		}else{
 			expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeUsuario("No es posible guardar el registro. No hay registros para guardar.");
+			reserva.setMensajeError(expNgc.getMensajeUsuario());
 			throw expNgc;
 		}
 		
@@ -111,7 +116,7 @@ public class ReservaNGCImpl implements ReservaNGC {
 	
 	@Override
 	public TbReservas obtenerReservaxId(int id) throws ExcepcionesNGC {
-		TbReservas reserva = null;		
+		TbReservas reserva = new TbReservas();		
 		if(id > 0){
 			try {
 				reserva = reservaDao.obtenerReservaxId(id);
@@ -120,21 +125,24 @@ public class ReservaNGCImpl implements ReservaNGC {
 				expNgc.setMensajeTecnico(e.getMensajeTecnico());
 				expNgc.setMensajeUsuario(e.getMensajeUsuario());
 				expNgc.setOrigen(e.getOrigen());
+				reserva.setMensajeError(expNgc.getMensajeUsuario());
 				throw expNgc;
 			}
 		}else{
 			expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeUsuario("No es posible realizar la consulta. El ID debe ser mayor que cero.");
+			reserva.setMensajeError(expNgc.getMensajeUsuario());
 			throw expNgc;
 		}
 		
 		return reserva;
 	}
 
+	
 	@Override
 	public List<TbReservas> obtenerReservaxUsuario(String login) throws ExcepcionesNGC {
 		List<TbReservas> lista = null;
-		TbUsuarios usuario = null;
+		TbUsuarios usuario = new TbUsuarios();
 		
 		if(login != null && !login.isEmpty()){
 			try {
@@ -144,6 +152,8 @@ public class ReservaNGCImpl implements ReservaNGC {
 				}else{
 					expNgc = new ExcepcionesNGC();
 					expNgc.setMensajeUsuario("No es posible realizar la consulta. El Login no Existe.");
+					lista = new ArrayList<>();
+					lista.add(new TbReservas(expNgc.getMensajeUsuario()));
 					throw expNgc;
 				}				
 			} catch (ExcepcionesDAO e) {
@@ -151,14 +161,17 @@ public class ReservaNGCImpl implements ReservaNGC {
 				expNgc.setMensajeTecnico(e.getMensajeTecnico());
 				expNgc.setMensajeUsuario(e.getMensajeUsuario());
 				expNgc.setOrigen(e.getOrigen());
+				lista = new ArrayList<>();
+				lista.add(new TbReservas(expNgc.getMensajeUsuario()));
 				throw expNgc;
 			}
 		}else{
 			expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeUsuario("No es posible realizar la consulta. El Login no puede ser NULL o Vacio.");
+			lista=new ArrayList<>();
+			lista.add(new TbReservas(expNgc.getMensajeUsuario()));
 			throw expNgc;
-		}
-		
+		}		
 		return lista;
 	}
 	
@@ -180,6 +193,8 @@ public class ReservaNGCImpl implements ReservaNGC {
 				}else{
 					expNgc = new ExcepcionesNGC();
 					expNgc.setMensajeUsuario("No se encuentra una Cancha asociada al ID suministrado.");
+					lista=new ArrayList<>();
+					lista.add(new TbReservas(expNgc.getMensajeUsuario()));
 					throw expNgc;
 				}
 			} catch (ExcepcionesDAO e) {
@@ -187,6 +202,8 @@ public class ReservaNGCImpl implements ReservaNGC {
 				expNgc.setMensajeTecnico(e.getMensajeTecnico());
 				expNgc.setMensajeUsuario(e.getMensajeUsuario());
 				expNgc.setOrigen(e.getOrigen());
+				lista=new ArrayList<>();
+				lista.add(new TbReservas(expNgc.getMensajeUsuario()));
 				throw expNgc;
 			}			
 		}else{
@@ -207,8 +224,7 @@ public class ReservaNGCImpl implements ReservaNGC {
 		if(maestroReserva.getHoraInicio() == null || maestroReserva.getHoraInicio().toString().isEmpty())
 			mensaje.append("La Hora de Inicio de la Reserva no debe ser vacio o NuLL. <br>");
 		if(maestroReserva.getHoraFin() == null || maestroReserva.getHoraFin().toString().isEmpty())
-			mensaje.append("La Hora de Fin de la Reserva no debe ser vacio o NuLL. <br>");
-		
+			mensaje.append("La Hora de Fin de la Reserva no debe ser vacio o NuLL. <br>");		
 		
 		return mensaje.toString();
 	}

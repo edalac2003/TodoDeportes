@@ -20,22 +20,15 @@ public class TbCanchas implements java.io.Serializable {
 	public TbCanchas() {
 		super();
 	}
-	
+
 
 	/**
-	 * @param idcancha
-	 * @param tbTipoEscenario
-	 * @param tbTiposDeporte
-	 * @param nombre
+	 * @param mensajeError
 	 */
-	public TbCanchas(int idcancha, TbTipoEscenario tbTipoEscenario, TbTiposDeporte tbTiposDeporte, String nombre) {
+	public TbCanchas(String mensajeError) {
 		super();
-		this.idcancha = idcancha;
-		this.tbTipoEscenario = tbTipoEscenario;
-		this.tbTiposDeporte = tbTiposDeporte;
-		this.nombre = nombre;
+		this.mensajeError = mensajeError;
 	}
-
 
 	/**
 	 * @return the idcancha

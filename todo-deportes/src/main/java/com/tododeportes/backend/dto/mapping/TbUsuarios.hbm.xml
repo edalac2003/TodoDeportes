@@ -11,7 +11,7 @@
         <many-to-one name="tbEstados" class="com.tododeportes.backend.dto.TbEstados" fetch="join">
             <column name="ESTADO" />
         </many-to-one>
-        <many-to-one name="tbPersonas" class="com.tododeportes.backend.dto.TbPersonas" fetch="join">
+        <many-to-one name="tbPersonas" class="com.tododeportes.backend.dto.TbPersonas" fetch="join" lazy="false">
             <column name="PERSONA" />
         </many-to-one>
         <many-to-one name="tbRoles" class="com.tododeportes.backend.dto.TbRoles" fetch="join">

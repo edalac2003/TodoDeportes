@@ -8,10 +8,10 @@
             <column name="IDPERSONA" />
             <generator class="increment" />
         </id>
-        <many-to-one name="tbCiudades" class="com.tododeportes.backend.dto.TbCiudades" fetch="join">
+        <many-to-one name="tbCiudades" class="com.tododeportes.backend.dto.TbCiudades" fetch="join" lazy="false">
             <column name="CIUDAD" />
         </many-to-one>
-        <many-to-one name="tbTiposDocumento" class="com.tododeportes.backend.dto.TbTiposDocumento" fetch="join">
+        <many-to-one name="tbTiposDocumento" class="com.tododeportes.backend.dto.TbTiposDocumento" fetch="join" lazy="false">
             <column name="TIPO_DOCUMENTO" />
         </many-to-one>
         <property name="nombres" type="string">

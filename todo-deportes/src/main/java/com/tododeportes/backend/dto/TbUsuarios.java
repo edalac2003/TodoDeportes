@@ -24,26 +24,14 @@ public class TbUsuarios implements java.io.Serializable {
 	}
 	
 
+
 	/**
-	 * @param idusuario
-	 * @param tbEstados
-	 * @param tbPersonas
-	 * @param tbRoles
-	 * @param login
-	 * @param password
+	 * @param mensajeError
 	 */
-	public TbUsuarios(int idusuario, TbEstados tbEstados, TbPersonas tbPersonas, TbRoles tbRoles, String login,
-			String password) {
+	public TbUsuarios(String mensajeError) {
 		super();
-		this.idusuario = idusuario;
-		this.tbEstados = tbEstados;
-		this.tbPersonas = tbPersonas;
-		this.tbRoles = tbRoles;
-		this.login = login;
-		this.password = password;
+		this.mensajeError = mensajeError;
 	}
-
-
 
 	/**
 	 * @return the idusuario

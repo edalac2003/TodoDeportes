@@ -46,7 +46,7 @@ public class TbCanchasxunidadDeportiva implements java.io.Serializable {
 	}
 
 	/**
-	 * @param idcanchaUnidad the idcanchaUnidad to set
+	 * @param idcanchaUnidad the idcanchunjnunjunj njunjn njjunnunnnnjunjun nnaUnidad to set
 	 */
 	public void setIdcanchaUnidad(int idcanchaUnidad) {
 		this.idcanchaUnidad = idcanchaUnidad;

@@ -17,7 +17,7 @@ public class TbReservas implements java.io.Serializable {
 	private Date horaFin;
 	private TbUsuarios tbUsuarios;
 	private Integer tiempo;
-	private BigDecimal valor;
+	private Long valor;
 	private TbEstados tbEstados;
 
 	private String mensajeError;
@@ -144,16 +144,18 @@ public class TbReservas implements java.io.Serializable {
 	/**
 	 * @return the valor
 	 */
-	public BigDecimal getValor() {
+	public Long getValor() {
 		return valor;
 	}
+
 
 	/**
 	 * @param valor the valor to set
 	 */
-	public void setValor(BigDecimal valor) {
+	public void setValor(Long valor) {
 		this.valor = valor;
 	}
+
 
 	/**
 	 * @return the tbEstados

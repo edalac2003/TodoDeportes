@@ -1,39 +1,76 @@
 package com.tododeportes.backend.ngc.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.tododeportes.backend.dao.CanchasDAO;
 import com.tododeportes.backend.dto.TbCanchas;
 import com.tododeportes.backend.dto.TbTipoEscenario;
 import com.tododeportes.backend.dto.TbTiposDeporte;
+import com.tododeportes.backend.dto.maestros.MaestroCanchas;
 import com.tododeportes.backend.ngc.CanchaNGC;
+import com.tododeportes.backend.ngc.TipoDeporteNGC;
+import com.tododeportes.backend.ngc.TipoEscenarioNGC;
 import com.tododeportes.backend.util.exception.ExcepcionesDAO;
 import com.tododeportes.backend.util.exception.ExcepcionesNGC;
 
 public class CanchasNGCImpl implements CanchaNGC {
 
 	ExcepcionesNGC expNgc;
+	private TbCanchas cancha;
+	private TbTipoEscenario tipoEscenario;
+	private TbTiposDeporte tipoDeporte;
+	
 	
 	CanchasDAO canchaDao;
+	TipoDeporteNGC tipoDeporteNgc;
+	TipoEscenarioNGC tipoEscenarioNgc;
 	
 	public void setCanchaDao(CanchasDAO canchaDao) {
 		this.canchaDao = canchaDao;
 	}
+	public void setTipoDeporteNgc(TipoDeporteNGC tipoDeporteNgc) {
+		this.tipoDeporteNgc = tipoDeporteNgc;
+	}
+
+	public void setTipoEscenarioNgc(TipoEscenarioNGC tipoEscenarioNgc) {
+		this.tipoEscenarioNgc = tipoEscenarioNgc;
+	}
+
 
 	@Override
-	public void guardarCancha(TbCanchas cancha) throws ExcepcionesNGC {
-		if(cancha == null){
+	public void guardarCancha(MaestroCanchas maestroCancha) throws ExcepcionesNGC {
+		
+		if(maestroCancha == null){
 			expNgc = new ExcepcionesNGC();
 			expNgc.setMensajeUsuario("El Registro de la Cancha no puede ser Null.");
 			throw expNgc;
-		}
-		
-		if((cancha.getTbTipoEscenario() == null) || (cancha.getTbTiposDeporte() == null)){
+		}		
+		if(maestroCancha.getTipoDeporte() != null){
+			tipoDeporte = tipoDeporteNgc.obtenerTipoDeporte(maestroCancha.getTipoDeporte());
+		}else{
 			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeUsuario("El Registro de la Cancha contiene campos que no pueden ser Null.");
+			expNgc.setMensajeUsuario("El Tipo de Deporte no pueden ser Null.");
 			throw expNgc;
 		}
+		if(maestroCancha.getTipoEscenario() != null){
+			tipoEscenario = tipoEscenarioNgc.obtenerTipoEscenario(maestroCancha.getTipoEscenario());
+		}else{
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("El Tipo de Escenario no pueden ser Null.");
+			throw expNgc;
+		}
+		if(maestroCancha.getNombre() == null){
+			expNgc = new ExcepcionesNGC();
+			expNgc.setMensajeUsuario("El Nombre no pueden ser Null o vacio.");
+			throw expNgc;
+		}		
 		
+		cancha = new TbCanchas();
+		cancha.setNombre(maestroCancha.getNombre());
+		cancha.setTbTipoEscenario(tipoEscenario);
+		cancha.setTbTiposDeporte(tipoDeporte);
+			
 		try {
 			canchaDao.guardarCancha(cancha);
 		} catch (ExcepcionesDAO e) {
@@ -47,37 +84,54 @@ public class CanchasNGCImpl implements CanchaNGC {
 	}
 
 	@Override
-	public void actualizarCancha(TbCanchas cancha) throws ExcepcionesNGC {
-		if((cancha == null) || (cancha.getIdcancha() <= 0)){
+	public void actualizarCancha(MaestroCanchas maestroCancha) throws ExcepcionesNGC {
+		if(maestroCancha != null){
+			if(maestroCancha.getIdCancha() > 0){
+				try {
+					cancha = canchaDao.obtenerCanchaxId(maestroCancha.getIdCancha());
+					if(maestroCancha.getTipoDeporte() != null){
+						tipoDeporte = tipoDeporteNgc.obtenerTipoDeporte(maestroCancha.getTipoDeporte());						
+						cancha.setTbTiposDeporte(tipoDeporte!=null?tipoDeporte:cancha.getTbTiposDeporte());
+					}else{
+						expNgc = new ExcepcionesNGC();
+						expNgc.setMensajeUsuario("El Tipo de Deporte no pueden ser Null.");
+						throw expNgc;
+					}
+					if(maestroCancha.getTipoEscenario() != null){
+						tipoEscenario = tipoEscenarioNgc.obtenerTipoEscenario(maestroCancha.getTipoEscenario());
+						cancha.setTbTipoEscenario(tipoEscenario!=null?tipoEscenario:cancha.getTbTipoEscenario());
+					}else{
+						expNgc = new ExcepcionesNGC();
+						expNgc.setMensajeUsuario("El Tipo de Escenario no pueden ser Null.");
+						throw expNgc;
+					}
+					if(maestroCancha.getNombre() != null){
+						cancha.setNombre(maestroCancha.getNombre()!=null || !maestroCancha.getNombre().isEmpty()?
+								maestroCancha.getNombre():cancha.getNombre());
+					}else{
+						expNgc = new ExcepcionesNGC();
+						expNgc.setMensajeUsuario("El Nombre no pueden ser Null o vacio.");
+						throw expNgc;
+					}
+					//Se realizan las validaciones y luego se actualiza el registro
+					canchaDao.actualizarCancha(cancha);
+				} catch (ExcepcionesDAO e) {
+					expNgc = new ExcepcionesNGC();
+					expNgc.setMensajeTecnico(e.getMensajeTecnico());
+					expNgc.setMensajeUsuario(e.getMensajeUsuario());
+					expNgc.setOrigen(e.getOrigen());
+					throw expNgc;
+				}
+			}else{
+				expNgc = new ExcepcionesNGC();
+				expNgc.setMensajeUsuario("No es posible actualizar el registro. Ingrese un ID cancha v&aacute;lido.");
+				throw expNgc;
+			}
+		}else{
 			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeUsuario("El Registro de la Cancha no puede ser Null.");
+			expNgc.setMensajeUsuario("No es posible actualizar el registro porque es Null o esta vacio.");
 			throw expNgc;
 		}
-		
-		if((cancha.getTbTipoEscenario() == null) || (cancha.getTbTiposDeporte() == null)){
-			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeUsuario("El Registro de la Cancha contiene campos que no pueden ser Null.");
-			throw expNgc;
-		}
-		
-		TbCanchas existeCancha = obtenerCanchaxId(cancha.getIdcancha());
-		if(existeCancha == null){
-			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeUsuario("El Registro de la Cancha NO EXISTE en la Base de Datos.");
-			throw expNgc;
-		}
-		
-		
-		try {
-			canchaDao.actualizarCancha(cancha);
-		} catch (ExcepcionesDAO e) {
-			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeTecnico(e.getMensajeTecnico());
-			expNgc.setMensajeUsuario(e.getMensajeUsuario());
-			expNgc.setOrigen(e.getOrigen());
-			throw expNgc;
-		}
-
 	}
 
 	
@@ -98,6 +152,7 @@ public class CanchasNGCImpl implements CanchaNGC {
 			expNgc.setMensajeTecnico(e.getMensajeTecnico());
 			expNgc.setMensajeUsuario(e.getMensajeUsuario());
 			expNgc.setOrigen(e.getOrigen());
+			cancha = new TbCanchas(e.getMensajeUsuario());
 			throw expNgc;
 		}
 		
@@ -127,44 +182,12 @@ public class CanchasNGCImpl implements CanchaNGC {
 			expNgc.setMensajeTecnico(e.getMensajeTecnico());
 			expNgc.setMensajeUsuario(e.getMensajeUsuario());
 			expNgc.setOrigen(e.getOrigen());
+			listaCanchas = new ArrayList<>();
+			listaCanchas.add(new TbCanchas(e.getMensajeUsuario()));
 			throw expNgc;
 		}
 		
 		return listaCanchas;
-	}
-
-	@Override
-	public List<TbTiposDeporte> listarTipoDeporte() throws ExcepcionesNGC {
-		List<TbTiposDeporte> listaTipoDeporte = null;
-		
-		try {
-			listaTipoDeporte = canchaDao.listarTipoDeporte();
-		} catch (ExcepcionesDAO e) {
-			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeTecnico(e.getMensajeTecnico());
-			expNgc.setMensajeUsuario(e.getMensajeUsuario());
-			expNgc.setOrigen(e.getOrigen());
-			throw expNgc;
-		}
-		
-		return listaTipoDeporte;
-	}
-
-	@Override
-	public List<TbTipoEscenario> listarTipoEscenario() throws ExcepcionesNGC {
-		List<TbTipoEscenario> listaTipoEscenarios = null;
-		
-		try {
-			listaTipoEscenarios = canchaDao.listarTipoEscenario();
-		} catch (ExcepcionesDAO e) {
-			expNgc = new ExcepcionesNGC();
-			expNgc.setMensajeTecnico(e.getMensajeTecnico());
-			expNgc.setMensajeUsuario(e.getMensajeUsuario());
-			expNgc.setOrigen(e.getOrigen());
-			throw expNgc;
-		}
-		
-		return listaTipoEscenarios;
 	}
 
 }

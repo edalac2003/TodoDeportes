@@ -19,6 +19,7 @@ public class ReservasDAOHibernate extends HibernateDaoSupport implements Reserva
 	
 	ExcepcionesDAO expDao;
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void guardarReserva(TbReservas reserva) throws ExcepcionesDAO {
 		Session session = null;
@@ -84,7 +85,7 @@ public class ReservasDAOHibernate extends HibernateDaoSupport implements Reserva
 		return reserva;
 	}
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation", "unchecked" })
 	@Override
 	public List<TbReservas> obtenerReservaxUsuario(TbUsuarios usuario) throws ExcepcionesDAO {
 		List<TbReservas> lista = null;

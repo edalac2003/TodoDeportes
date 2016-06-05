@@ -1,5 +1,8 @@
 package com.tododeportes.backend.services;
 
+/**
+ * Esta clase contiene las entradas a los servicios relacionados con la entidad TbUsuario.
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;

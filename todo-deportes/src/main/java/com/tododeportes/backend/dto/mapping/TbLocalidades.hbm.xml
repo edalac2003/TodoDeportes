@@ -8,7 +8,7 @@
             <column name="IDLOCALIDAD" />
             <generator class="increment" />
         </id>
-        <many-to-one name="tbCiudades" class="com.tododeportes.backend.dto.TbCiudades" fetch="join">
+        <many-to-one name="tbCiudades" class="com.tododeportes.backend.dto.TbCiudades" fetch="join" lazy="false">
             <column name="CIUDAD" />
         </many-to-one>
         <property name="nombre" type="string">

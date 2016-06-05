@@ -38,6 +38,10 @@ public class CanchasNGCImpl implements CanchaNGC {
 	}
 
 
+	/**
+	 * GuardarCancha.
+	 * Se recibe un objeto maestro con los ID's de las entidades relacionadas
+	 */
 	@Override
 	public void guardarCancha(MaestroCanchas maestroCancha) throws ExcepcionesNGC {
 		
@@ -80,7 +84,6 @@ public class CanchasNGCImpl implements CanchaNGC {
 			expNgc.setOrigen(e.getOrigen());
 			throw expNgc;
 		}
-
 	}
 
 	@Override

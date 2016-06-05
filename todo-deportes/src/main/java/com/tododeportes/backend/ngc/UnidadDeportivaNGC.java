@@ -20,6 +20,6 @@ public interface UnidadDeportivaNGC {
 	
 	public TbUnidadesDeportivas obtenerUnidadDeportivaxId(int id)  throws ExcepcionesNGC;
 		
-	public List<TbCanchasxunidadDeportiva> listarCanchaxUnidadDeportiva(Long idUnidadDeportiva) throws ExcepcionesNGC;
+	public List<TbCanchasxunidadDeportiva> listarCanchaxUnidadDeportiva(int idUnidadDeportiva) throws ExcepcionesNGC;
 	
 }

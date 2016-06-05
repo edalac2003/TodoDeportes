@@ -1,5 +1,8 @@
 package com.tododeportes.backend.services;
 
+/**
+ * Esta clase contiene las entradas a los servicios relacionados con la entidad TbPersona.
+ */
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

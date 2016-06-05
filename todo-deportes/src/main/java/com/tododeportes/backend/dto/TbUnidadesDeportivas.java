@@ -25,6 +25,14 @@ public class TbUnidadesDeportivas implements java.io.Serializable {
 	}
 
 	/**
+	 * @param mensajeError
+	 */
+	public TbUnidadesDeportivas(String mensajeError) {
+		super();
+		this.mensajeError = mensajeError;
+	}
+
+	/**
 	 * @return the idunidadDeportiva
 	 */
 	public int getIdunidadDeportiva() {

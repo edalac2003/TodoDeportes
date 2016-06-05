@@ -195,13 +195,13 @@ public class UnidadDeportivaNGCImpl implements UnidadDeportivaNGC {
 
 
 	@Override
-	public List<TbCanchasxunidadDeportiva> listarCanchaxUnidadDeportiva(Long idUnidadDeportiva)
+	public List<TbCanchasxunidadDeportiva> listarCanchaxUnidadDeportiva(int idUnidadDeportiva)
 			throws ExcepcionesNGC {
 		List<TbCanchasxunidadDeportiva> lista = null;
 		TbUnidadesDeportivas unidadDeportiva = null;
 		if(idUnidadDeportiva > 0){
 			try {
-				unidadDeportiva = unidadDeportivaDao.obtenerUnidadDeportivaxId(idUnidadDeportiva.intValue());
+				unidadDeportiva = unidadDeportivaDao.obtenerUnidadDeportivaxId(idUnidadDeportiva);
 				if(unidadDeportiva != null){
 					lista = unidadDeportivaDao.listarCanchaxUnidadDeportiva(unidadDeportiva);					
 				}else{

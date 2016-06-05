@@ -1,5 +1,10 @@
 package com.tododeportes.backend.services;
 
+/**
+ * Esta clase se hizo para cumplir propositos informativos y mostrar la estructura de las entidades maestras,
+ * por medio de las cuales, el front-end enviará al back-end loa información que será guardada en la base
+ * de datos.   
+ */
 import java.util.Date;
 
 import org.springframework.web.bind.annotation.RequestMapping;
